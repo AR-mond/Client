@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('../../../public/images/sample_img_ar.jpg') center/cover
+    no-repeat;
+  height: 25rem;
+}
+
+.container {
+  margin-left: 10%;
+}
+
+.title {
+  font-size: 40px;
+  margin: 0;
+}
+
+.startBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #434343;
+  border: 1px solid #707070;
+  color: white;
+  width: 17.5rem;
+  height: 4.25rem;
+  cursor: pointer;
+}
+
+.btnTitle {
+  font-size: 1.25rem;
+}

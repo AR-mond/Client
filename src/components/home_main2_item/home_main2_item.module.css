@@ -1,0 +1,16 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.itemImg {
+  width: 260px;
+  height: 230px;
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: bold;
+  margin-top: 1.875rem;
+}
