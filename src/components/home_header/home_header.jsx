@@ -7,19 +7,19 @@ const HomeHeader = () => {
       <div className={styles.container}>
         <span>하이쓰리디</span>
         <ul className={styles.menu}>
-          <li>SERVICES</li>
-          <li>RESOURCES</li>
-          <li>CONTACTS</li>
-          <li>REVIEWS</li>
-          <li>NEWS LETTER</li>
+          <li className={styles.menu_item}>SERVICES</li>
+          <li className={styles.menu_item}>RESOURCES</li>
+          <li className={styles.menu_item}>CONTACTS</li>
+          <li className={styles.menu_item}>REVIEWS</li>
+          <li className={styles.menu_item}>NEWS LETTER</li>
         </ul>
       </div>
       <ul className={styles.setting}>
-        <li>
+        <li className={styles.setting_item}>
           <img></img>
           <span>Account</span>
         </li>
-        <li>
+        <li className={styles.setting_item}>
           <img></img>
           <span>Language</span>
         </li>

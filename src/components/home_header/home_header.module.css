@@ -23,7 +23,8 @@
   margin: 0;
 }
 
-li {
+.menu_item,
+.setting_item {
   padding: 0 2rem;
   cursor: pointer;
 }
