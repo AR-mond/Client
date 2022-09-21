@@ -1,17 +1,16 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/home/home';
+import Login from './components/login/login';
 import styles from './app.module.css';
-import HomeFooter from './components/home_footer/home_footer';
-import HomeHeader from './components/home_header/home_header';
-import HomeMain from './components/home_main/home_main';
-import HomeMain2 from './components/home_main2/home_main2';
 
 const App = () => {
   return (
-    <>
-      <HomeHeader />
-      <HomeMain />
-      <HomeMain2 />
-      <HomeFooter />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/login" exact element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
