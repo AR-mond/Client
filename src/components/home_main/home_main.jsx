@@ -20,7 +20,7 @@ const HomeMain = () => {
         </p>
         <div className={styles.startBtn}>
           <span className={styles.btnTitle}>바로가기</span>
-          <img src="icon/next.svg" />
+          <img src="icon/next.svg" alt="next" />
         </div>
       </div>
     </section>
