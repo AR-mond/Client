@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home/home';
 import Login from './components/login/login';
 import styles from './app.module.css';
+import Test1 from './components/test1/test1';
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/login" exact element={<Login />} />
+        <Route path="/test1" exact element={<Test1 />} />
       </Routes>
     </BrowserRouter>
   );
