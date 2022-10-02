@@ -1,14 +1,31 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 6rem;
-  padding: 0 8rem;
+  padding: 0 10rem;
+  background-color: armondBlack;
+  color: armondWhite;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .container {
   display: flex;
+  align-items: center;
+}
+
+.team_name {
+  font-size: 40px;
+  font-family: 'cafe24Oneprettynight';
+  cursor: pointer;
+}
+
+.team_name_highlight {
+  color: armondOrange;
 }
 
 .menu {
@@ -25,6 +42,6 @@
 
 .menu_item,
 .setting_item {
-  padding: 0 2rem;
+  margin: 0 1rem;
   cursor: pointer;
 }

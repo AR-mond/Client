@@ -5,7 +5,9 @@ const HomeHeader = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <span>하이쓰리디</span>
+        <span className={styles.team_name}>
+          <span className={styles.team_name_highlight}>AR</span>MOND
+        </span>
         <ul className={styles.menu}>
           <li className={styles.menu_item}>SERVICES</li>
           <li className={styles.menu_item}>RESOURCES</li>
@@ -14,14 +16,13 @@ const HomeHeader = () => {
           <li className={styles.menu_item}>NEWS LETTER</li>
         </ul>
       </div>
+
       <ul className={styles.setting}>
         <li className={styles.setting_item}>
-          <img></img>
-          <span>Account</span>
+          <img src="icon/account.svg"></img>
         </li>
         <li className={styles.setting_item}>
-          <img></img>
-          <span>Language</span>
+          <img src="icon/language.svg"></img>
         </li>
       </ul>
     </header>
