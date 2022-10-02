@@ -1,33 +1,52 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: url('../../../public/images/sample_img_ar.jpg') center/cover
-    no-repeat;
-  height: 25rem;
+  background: url('../../../public/images/main.png') center/cover no-repeat;
+  height: 100vh;
+  color: armondWhite;
 }
 
 .container {
-  margin-left: 10%;
+  margin-left: 20%;
 }
 
-.title {
-  font-size: 40px;
+.p1 {
+  font-size: 2.375rem;
+  font-family: 'notoSansKr-thin';
+  margin: 0;
+  opacity: 0.85;
+}
+
+.p2 {
+  font-size: 2.5rem;
+  font-family: 'notoSansKr-bold';
+  margin: 10px 0;
+}
+
+.highlight {
+  color: armondOrange;
+}
+
+.p3 {
+  font-family: 'notoSansKr-thin';
+  opacity: 0.85;
   margin: 0;
 }
 
 .startBtn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #434343;
-  border: 1px solid #707070;
-  color: white;
-  width: 17.5rem;
-  height: 4.25rem;
+  width: fit-content;
+  height: fit-content;
   cursor: pointer;
+  font-family: 'notoSansKr-thin';
+  margin-top: 2.5rem;
+  opacity: 0.85;
 }
 
 .btnTitle {
-  font-size: 1.25rem;
+  margin-right: 0.25rem;
 }
