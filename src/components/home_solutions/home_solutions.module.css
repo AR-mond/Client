@@ -1,0 +1,31 @@
+.solutions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-family: 'notoSansKr-regular';
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 2.375rem;
+  font-family: 'notoSansKr-bold';
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+  margin: 48px 0;
+}
+
+.solution1,
+.solution2 {
+  margin-bottom: 120px;
+}
