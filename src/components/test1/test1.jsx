@@ -11,17 +11,19 @@ const Test1 = () => {
   //   document.body.appendChild(scriptModelView);
   // }, []);
   return (
-    <model-viewer
-      className={styles.model}
-      src="3d/sample2.gltf"
-      alt="sample"
-      ar
-      ar-rotate
-      auto-rotate
-      camera-controls
-      // stage-light-intensity="3"
-      // environment-intensity="2"
-    ></model-viewer>
+    <div className={styles.container}>
+      <model-viewer
+        alt="sample"
+        // ar-rotate
+        camera-controls
+        touch-action="pan-y"
+        auto-rotate
+        src="3d/sample2.gltf"
+        ar
+        // stage-light-intensity="3"
+        // environment-intensity="2"
+      ></model-viewer>
+    </div>
   );
 };
 
