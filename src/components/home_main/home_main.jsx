@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './home_main.module.css';
 
 const HomeMain = () => {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.main}>
       <div className={styles.container}>
@@ -18,7 +21,12 @@ const HomeMain = () => {
           <br />
           실제 제작을 아몬드에서 해결하세요
         </p>
-        <div className={styles.startBtn}>
+        <div
+          className={styles.startBtn}
+          onClick={() => {
+            navigate('/estimate');
+          }}
+        >
           <span className={styles.btnTitle}>바로가기</span>
           <img src="icon/next.svg" alt="next" />
         </div>

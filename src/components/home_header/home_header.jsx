@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './home_header.module.css';
 
 const HomeHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -18,7 +21,12 @@ const HomeHeader = () => {
       </div>
 
       <ul className={styles.setting}>
-        <li className={styles.setting_item}>
+        <li
+          className={styles.setting_item}
+          onClick={() => {
+            navigate('/login');
+          }}
+        >
           <img src="icon/account.svg" alt="account"></img>
         </li>
         <li className={styles.setting_item}>
