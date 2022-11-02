@@ -1,11 +1,11 @@
 import React from 'react';
-import MypageHeader from '../mypage_header/mypage_header';
+import HomeHeader from '../home_header/home_header';
 import MypageMain from '../mypage_main/mypage_main';
 
 const Mypage = () => {
   return(
     <>
-      <MypageHeader />
+      <HomeHeader />
       <MypageMain />
     </>
   );
