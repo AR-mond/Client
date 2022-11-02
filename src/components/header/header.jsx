@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './home_header.module.css';
+import styles from './header.module.css';
 
-const HomeHeader = () => {
+const Header = () => {
   const navigate = useNavigate();
 
   return (
@@ -37,4 +37,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default Header;

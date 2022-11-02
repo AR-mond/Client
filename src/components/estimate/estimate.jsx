@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import EstimateTable from '../estimate_table/estimate_table';
 import EstimateSpace from '../estimate_space/estimate_space';
-import HomeHeader from '../home_header/home_header';
+import HomeHeader from '../header/header';
 import styles from './estimate.module.css';
 
 const Estimate = () => {
