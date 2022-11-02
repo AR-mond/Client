@@ -1,0 +1,135 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.container {
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  margin: auto;
+  border: 1px solid black;
+  box-shadow: 20px 20px 40px #00000029;
+}
+
+.file_box {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+}
+
+.file_btn {
+  font-size: 1.125rem;
+  width: fit-content;
+  height: fit-content;
+  background-color: armondOrange;
+  color: armondBlack;
+  cursor: pointer;
+  font-family: 'notoSansKr-light';
+  padding: 8px 30px;
+  border: 1px solid #707070;
+  border-radius: 23px;
+}
+
+.info {
+  width: 40%;
+  padding: 0 25px;
+}
+
+.material {
+  border-bottom: 1px solid #707070;
+  padding: 20px 0;
+}
+
+.material_title {
+  size: 1.125rem;
+  color: armondBlack;
+  font-family: 'notoSansKr-regular';
+  margin-bottom: 10px;
+}
+
+.material_dropdown {
+  width: 150px;
+  border: 1px solid black;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+.nums {
+  border-bottom: 1px solid #707070;
+  padding: 20px 0;
+}
+
+.nums_title {
+  size: 1.125rem;
+  color: armondBlack;
+  font-family: 'notoSansKr-regular';
+  margin-bottom: 10px;
+}
+
+.nums_btns {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px;
+  background-color: #707070;
+}
+
+.nums_minus_btn,
+.nums_plus_btn {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #707070;
+  background-color: white;
+  cursor: pointer;
+}
+
+.clean {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #707070;
+  padding: 20px 0;
+}
+
+.clean_title {
+  size: 1.125rem;
+  color: armondBlack;
+  font-family: 'notoSansKr-regular';
+}
+
+.clean_checkbox {
+  cursor: pointer;
+}
+
+.painting {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #707070;
+  padding: 20px 0;
+}
+
+.painting_title {
+  size: 1.125rem;
+  color: armondBlack;
+  font-family: 'notoSansKr-regular';
+}
+
+.painting_checkbox {
+  cursor: pointer;
+}
+
+.add_btn,
+.estimate_btn {
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  background-color: armondOrange;
+  color: armondBlack;
+  cursor: pointer;
+  font-family: 'notoSansKr-normal';
+  padding: 8px 0;
+  border: 1px solid #707070;
+  margin-top: 20px;
+}

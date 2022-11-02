@@ -1,0 +1,24 @@
+.estimate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  align-items: center;
+  margin-bottom: 90px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-family: 'notoSansKr-medium';
+  margin-bottom: 30px;
+}
+
+.info {
+  font-size: 1.25rem;
+  font-family: 'notoSansKr-medium';
+}

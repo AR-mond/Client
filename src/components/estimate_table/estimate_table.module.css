@@ -1,0 +1,11 @@
+.table {
+  width: 1000px;
+  margin: 100px 0;
+  border: 1px solid black;
+}
+
+.nofile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
