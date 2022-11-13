@@ -1,5 +1,14 @@
 @value armondOrange, armondBlack, armondWhite from '../../common/color.css';
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 .container {
   width: 1000px;
   display: flex;
@@ -31,6 +40,11 @@
   border-radius: 23px;
 }
 
+model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
 .info {
   width: 40%;
   padding: 0 25px;
@@ -48,11 +62,12 @@
   margin-bottom: 10px;
 }
 
-.material_dropdown {
+.material_selectbox {
   width: 150px;
   border: 1px solid black;
   padding: 3px 10px;
   border-radius: 6px;
+  font-family: 'notoSansKr-regular';
 }
 
 .nums {
@@ -86,6 +101,13 @@
   cursor: pointer;
 }
 
+.nums_count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: armondWhite;
+}
+
 .clean {
   display: flex;
   justify-content: space-between;
@@ -99,8 +121,13 @@
   font-family: 'notoSansKr-regular';
 }
 
-.clean_checkbox {
+.checkbox {
+  width: 30px;
+  height: 30px;
+  text-align: center;
   cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 4px;
 }
 
 .painting {
@@ -114,10 +141,6 @@
   size: 1.125rem;
   color: armondBlack;
   font-family: 'notoSansKr-regular';
-}
-
-.painting_checkbox {
-  cursor: pointer;
 }
 
 .add_btn,

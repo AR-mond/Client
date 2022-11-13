@@ -1,5 +1,6 @@
 .table {
   width: 1000px;
+  height: 200px;
   margin: 100px 0;
   border: 1px solid black;
 }
@@ -8,4 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 1000px;
+  height: 200px;
+  margin: 100px 0;
+  border: 1px solid black;
+  font-family: 'notoSansKr-medium';
 }
