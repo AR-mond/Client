@@ -100,6 +100,10 @@ const Estimate = () => {
       </div>
       <EstimateSpace onAdd={handleAdd} />
       <EstimateTable columns={columns} data={files} />
+      <div className={styles.btns}>
+        <div className={styles.caustion_btn}>견적 주의사항</div>
+        <div className={styles.request_btn}>견적 요청</div>
+      </div>
     </section>
   );
 };

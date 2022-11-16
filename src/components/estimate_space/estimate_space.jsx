@@ -145,7 +145,7 @@ const EstimateSpace = ({ onAdd }) => {
           <div className={styles.add_btn} onClick={handleAddFile}>
             파일 추가
           </div>
-          <div className={styles.estimate_btn}>견적 문의</div>
+          <div className={styles.ar_btn}>AR로 실측확인</div>
         </div>
       </div>
     </div>
