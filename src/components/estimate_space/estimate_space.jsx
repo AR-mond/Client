@@ -5,6 +5,7 @@ import styles from './estimate_space.module.css';
 
 const EstimateSpace = ({ onAdd }) => {
   const [file, setFile] = useState(null);
+  const [fileURL, setFileURL] = useState(null);
   const [material, setMeterial] = useState('ABS');
   const [nums, setNums] = useState(1);
   const [isCleanCheck, setIsCleanCheck] = useState(true);
@@ -17,6 +18,8 @@ const EstimateSpace = ({ onAdd }) => {
   };
 
   const handleChange = e => {
+    const url = window.URL.createObjectURL(e.target.files[0]);
+    setFileURL(url);
     setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   };
@@ -80,7 +83,7 @@ const EstimateSpace = ({ onAdd }) => {
             camera-controls
             touch-action="pan-y"
             auto-rotate
-            src="3d/sample2.gltf"
+            src={fileURL}
             ar
             // stage-light-intensity="3"
             // environment-intensity="2"
@@ -88,6 +91,7 @@ const EstimateSpace = ({ onAdd }) => {
         )}
         <input
           type="file"
+          accept=".gltf, .glb"
           ref={fileInput}
           onChange={handleChange}
           style={{ display: 'none' }}
