@@ -4,8 +4,10 @@ import EstimateSpace from '../estimate_space/estimate_space';
 import HomeHeader from '../header/header';
 import styles from './estimate.module.css';
 import { useState } from 'react';
+import Modal from '../modal/modal';
 
 const Estimate = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   const columns = useMemo(
     () => [
       {
@@ -89,6 +91,10 @@ const Estimate = () => {
     console.log(data);
   };
 
+  const handleModal = isOpen => {
+    setModalOpen(isOpen);
+  };
+
   return (
     <section className={styles.estimate}>
       <HomeHeader />
@@ -98,12 +104,13 @@ const Estimate = () => {
         <div className={styles.title}>실시간 견적확인</div>
         <div className={styles.info}>원하시는 출력물의 견적을 받아보세요</div>
       </div>
-      <EstimateSpace onAdd={handleAdd} />
+      <EstimateSpace onAdd={handleAdd} open={handleModal} />
       <EstimateTable columns={columns} data={files} />
       <div className={styles.btns}>
         <div className={styles.caustion_btn}>견적 주의사항</div>
         <div className={styles.request_btn}>견적 요청</div>
       </div>
+      <Modal isOpen={modalOpen} close={handleModal} />
     </section>
   );
 };

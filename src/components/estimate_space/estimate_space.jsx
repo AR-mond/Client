@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
+import Modal from '../modal/modal';
 import styles from './estimate_space.module.css';
 
-const EstimateSpace = ({ onAdd }) => {
+const EstimateSpace = ({ onAdd, open }) => {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [material, setMeterial] = useState('ABS');
@@ -67,6 +68,10 @@ const EstimateSpace = ({ onAdd }) => {
     if (nums > 1) {
       setNums(nums - 1);
     }
+  };
+
+  const handleOpen = () => {
+    open(true);
   };
 
   return (
@@ -145,7 +150,9 @@ const EstimateSpace = ({ onAdd }) => {
           <div className={styles.add_btn} onClick={handleAddFile}>
             파일 추가
           </div>
-          <div className={styles.ar_btn}>AR로 실측확인</div>
+          <div className={styles.ar_btn} onClick={handleOpen}>
+            AR로 실측확인
+          </div>
         </div>
       </div>
     </div>
