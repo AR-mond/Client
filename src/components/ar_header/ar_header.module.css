@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  background-color: #fffff8;
+  width: 100%;
+  height: 80px;
+  padding: 0 40px;
+  align-items: center;
+  position: absolute;
+  border-bottom: 1px solid #707070;
+}
+
+.model_name {
+  font-family: 'notoSansKr-medium';
+  font-size: 29px;
+}
+
+.designed_by {
+  font-family: 'notoSansKr-medium';
+  font-size: 29px;
+  color: #828282;
+  margin: 0 10px;
+}
+
+.designer_name {
+  font-family: 'MapoFlowerIsland';
+  font-size: 29px;
+  color: #828282;
+}
+
+.toggle_btn {
+  display: none;
+  position: absolute;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    justify-content: center;
+  }
+  .model_name,
+  .designed_by,
+  .designer_name {
+    font-size: 15px;
+  }
+
+  .toggle_btn {
+    display: block;
+  }
+}

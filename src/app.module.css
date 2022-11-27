@@ -32,3 +32,8 @@
   font-family: cafe24Oneprettynight;
   src: url(./fonts/Cafe24Oneprettynight.ttf);
 }
+
+@font-face {
+  font-family: MapoFlowerIsland;
+  src: url(./fonts/MapoFlowerIsland.otf);
+}
