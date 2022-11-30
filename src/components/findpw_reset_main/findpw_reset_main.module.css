@@ -1,0 +1,80 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.main {
+    display: flex;
+    justify-content: center;
+    background-color: armondWhite; 
+    width: 100%;
+}
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9rem;
+    margin-bottom: 9rem;
+    font-size: 1.1rem;
+    font-family: 'notoSansKr-bold';
+}
+
+
+.box {
+    align-items: center;
+    width: 345px;
+    height: 330px;
+    margin-top: 1rem;
+    background: armondWhite;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.find {
+    flex-direction: column;
+    padding-top: 30px;
+    
+}
+
+.idpw{
+    display: flex;
+}
+
+.id {
+    padding: 10px 35px;
+    margin-left: auto;
+    border-bottom: 2px solid;
+    font-size: 13px;
+    font-family: 'notoSansKr-regular';
+    color: #767676;
+}
+
+.pw {
+    padding: 10px 30px;
+    margin-right: auto;
+    border-bottom: solid;
+    font-size: 13px;
+    font-family: 'notoSansKr-regular';
+}
+
+.check {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #55CE76;
+    border-radius: 20px;
+    background-color: #55CE76;
+    margin: 40px auto 0px;
+}
+
+.linktitle {
+    text-align: center;
+    margin: 30px auto 20px;
+    font-size: 17px;
+    font-family: 'notoSansKr-regular';
+}
+
+.link {
+    text-align: center;
+    margin: 30px 60px 0px;
+    font-size: 13px;
+    font-family: 'notoSansKr-regular';
+}

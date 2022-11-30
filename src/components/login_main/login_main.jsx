@@ -16,13 +16,14 @@ const LoginMain = () => {
                             className={styles.input}
                             placeholder="비밀번호를 입력하세요"/>
                     </div>
+                    <div className={styles.wrongpassword}>비밀번호가 일치하지 않습니다.</div>
                     <section className={styles.loginidpassword}>
                         <div className={styles.logincheck}>
                             <input 
                                 className={styles.check}
                                 type="checkbox" id="chk"/>
                                 로그인 상태 유지
-                            <div className={styles.idpassword}>아이디{'/'}비밀번호</div>
+                            <div className={styles.idpassword}>아이디{'/'}비밀번호 찾기</div>
                         </div>
                     </section>
                     <div>

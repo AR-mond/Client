@@ -1,0 +1,77 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.main {
+    display: flex;
+    justify-content: center;
+    background-color: armondWhite; 
+    width: 100%;
+}
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 9rem;
+    margin-bottom: 9rem;
+    font-size: 1.1rem;
+    font-family: 'notoSansKr-bold';
+}
+
+
+.box {
+    align-items: center;
+    width: 345px;
+    height: 330px;
+    margin-top: 1rem;
+    background: armondWhite;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.reset {
+    text-align: center;
+    margin: 40px auto 0px;
+    font-size: 17px;
+    font-family: 'notoSansKr-regular';
+}
+
+.inputpw {
+    text-align: center;
+    width: 300px;
+    height: 65px;
+    display: flex;
+    padding: 14px;
+    margin: 20px auto 0px;
+    background: armondWhite;
+}
+
+.inputnewpw {
+    text-align: center;
+    width: 300px;
+    height: 51px;
+    display: flex;
+    padding: 14px;
+    padding-bottom: 0px;
+    margin: 0px auto 2px;
+    background: armondWhite;
+}
+
+.input {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'notoSansKr-regular';
+}
+
+.pwbtn {
+    display: block;
+    width: 280px;
+    height: 45px;
+    margin: 40px auto 0px;
+    background: armondOrange;
+    border: 1px solid #707070;
+    border-radius: 13px;
+    font-family: 'notoSansKr-medium';
+}
