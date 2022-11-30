@@ -1,0 +1,41 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.main {
+    margin-top: 15rem;
+    margin-bottom: 16rem;
+}
+
+.check {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #55CE76;
+    border-radius: 20px;
+    background-color: #55CE76;
+}
+
+.changepw {
+    text-align: center;
+    margin: 30px auto 40px;
+    font-size: 30px;
+    font-family: 'notoSansKr-medium';
+}
+
+.thank {
+    text-align: center;
+    font-size: 15px;
+    font-family: 'notoSansKr-medium';
+}
+
+.loginbtn {
+    display: block;
+    width: 260px;
+    height: 40px;
+    margin: auto;
+    margin-top: 60px;
+    background: armondOrange;
+    box-shadow: 5px 5px 6px #00000029;
+    border: 1px solid #707070;
+    font-size: 15px;
+    font-family: 'notoSansKr-medium';
+}

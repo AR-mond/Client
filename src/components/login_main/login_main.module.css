@@ -3,7 +3,7 @@
 .main {
     display: flex;
     justify-content: center;
-    background-color: white; 
+    background-color: armondWhite; 
     width: 100%;
 }
   
@@ -24,10 +24,9 @@
     width: 345px;
     height: 500px;
     margin-top: 1rem;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: armondWhite;
     border: 1px solid #707070;
     border-radius: 5px;
-    opacity: 1;
 }
 
 .inputid {
@@ -37,19 +36,18 @@
     display: flex;
     padding: 14px;
     margin: 25px auto 0px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    opacity: 1;
+    background: armondWhite;
 }
 
 .inputpassword {
     text-align: center;
     width: 300px;
-    height: 65px;
+    height: 51px;
     display: flex;
     padding: 14px;
-    margin: 0px auto 8px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    opacity: 1;
+    padding-bottom: 0px;
+    margin: 0px auto 2px;
+    background: armondWhite;
 }
 
 .input {
@@ -57,6 +55,18 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    font-family: 'notoSansKr-regular';
+}
+
+
+.wrongpassword {
+    display: none;
+    margin-left: 37px;
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+    font-weight: lighter;
+    color: red;
+    font-family: 'notoSansKr-regular';
 }
 
 .loginidpassword {
@@ -66,7 +76,9 @@
 
 .logincheck {
     display: flex;
+    margin-top: 15px;
     margin-left: 30px;
+    font-family: 'notoSansKr-regular';
 }
 
 .check {
@@ -75,7 +87,7 @@
 
 .idpassword {
     display: flex;
-    margin-left: 80px;
+    margin-left: 50px;
 }
 
 .loginbtn {
@@ -83,10 +95,10 @@
     width: 280px;
     height: 45px;
     margin: 18px auto 0px;
-    background: #FFB21D;
+    background: armondOrange;
     border: 1px solid #707070;
     border-radius: 13px;
-    font-weight: bold;
+    font-family: 'notoSansKr-medium';
 }
 
 .sns {
@@ -95,6 +107,7 @@
     margin-top: 33px;
     font-size: 12px;
     color: #767676;
+    font-family: 'notoSansKr-regular';
 }
 
 .snslogo {
@@ -140,6 +153,7 @@
     margin-top: 28px;
     font-size: 12px;
     color: #767676;
+    font-family: 'notoSansKr-regular';
 }
 
 .join {
@@ -147,8 +161,8 @@
     width: 280px;
     height: 45px;
     margin: 20px auto 0px;
-    background: #ffffff;
+    background: armondWhite;
     border: 1px solid #707070;
     border-radius: 13px;
-    font-weight: bold;
+    font-family: 'notoSansKr-medium';
 }
