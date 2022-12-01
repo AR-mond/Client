@@ -2,19 +2,29 @@ import React, { useRef } from 'react';
 import styles from './ar_main.module.css';
 
 const ArMain = ({ toggleState }) => {
-  const modelViewerTexture = useRef();
+  const modelViewerRef = useRef();
 
   const handleTexture = async e => {
-    const material =
-      modelViewerTexture.current.model.materials[0].normalTexture;
+    const material = modelViewerRef.current.model.materials[0].normalTexture;
 
     if (e.target.value == 'None') {
       material.setTexture(null);
     } else if (e.target.value) {
-      const texture = await modelViewerTexture.current.createTexture(
+      const texture = await modelViewerRef.current.createTexture(
         e.target.value
       );
       material.setTexture(texture);
+    }
+  };
+
+  const handleColor = e => {
+    if (e.target.tagName !== 'LI') return;
+    const material = modelViewerRef.current.model.materials[0];
+    const colorString = e.target.dataset.color;
+    if (colorString == 'None') {
+      material.pbrMetallicRoughness.setBaseColorFactor(null);
+    } else {
+      material.pbrMetallicRoughness.setBaseColorFactor(colorString);
     }
   };
 
@@ -22,7 +32,7 @@ const ArMain = ({ toggleState }) => {
     <section className={styles.main}>
       <div className={styles.modelViewer}>
         <model-viewer
-          ref={modelViewerTexture}
+          ref={modelViewerRef}
           alt="bear"
           // ar-rotate
           camera-controls
@@ -43,12 +53,29 @@ const ArMain = ({ toggleState }) => {
         </div>
         <div className={styles.color}>
           <div className={styles.color_title}>단색 색상</div>
-          <ul className={styles.colors}>
-            <li className={`${styles.color1} ${styles.round}`}></li>
-            <li className={`${styles.color2} ${styles.round}`}></li>
-            <li className={`${styles.color3} ${styles.round}`}></li>
-            <li className={`${styles.color4} ${styles.round}`}></li>
-            <li className={`${styles.color5} ${styles.round}`}></li>
+          <ul className={styles.colors} onClick={handleColor}>
+            <li
+              data-color="#FF6C6C"
+              className={`${styles.color1} ${styles.round}`}
+            ></li>
+            <li
+              data-color="#FDB433"
+              className={`${styles.color2} ${styles.round}`}
+            ></li>
+            <li
+              data-color="#F0FF6C"
+              className={`${styles.color3} ${styles.round}`}
+            ></li>
+            <li
+              data-color="#FF96F8"
+              className={`${styles.color4} ${styles.round}`}
+            ></li>
+            <li
+              data-color="None"
+              className={`${styles.default_color} ${styles.round}`}
+            >
+              <div className={styles.diagonal}></div>
+            </li>
           </ul>
         </div>
         <div className={styles.texture}>
