@@ -47,35 +47,64 @@
   margin-top: 10px;
 }
 
-.colors,
-.textures {
+.colors {
   display: flex;
   list-style: none;
   padding: 0;
   justify-content: space-around;
 }
 
+.textures {
+  width: 50%;
+  padding: 5px 0;
+  margin: 10px 0;
+}
+
 .round {
   width: 40px;
   height: 40px;
+  cursor: pointer;
   border-radius: 50%;
+}
+
+.rectangle {
+  font-family: 'notoSansKr-medium';
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
   cursor: pointer;
 }
 
 .color1 {
-  background-color: red;
+  background-color: #ff6c6c;
 }
 .color2 {
-  background-color: orange;
+  background-color: #fdb433;
 }
 .color3 {
-  background-color: yellow;
+  background-color: #f0ff6c;
 }
 .color4 {
-  background-color: pink;
+  background-color: #ff96f8;
 }
-.color5 {
-  background-color: black;
+.default_color {
+  background-color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagonal {
+  width: 50px;
+  height: 2px;
+  background-color: red;
+  transform: rotate(45deg);
 }
 
 .qr {
@@ -100,6 +129,7 @@
     display: none;
     position: absolute;
     width: 70%;
+    height: 100%;
   }
   .info.active {
     display: block;
@@ -117,5 +147,11 @@
 
   .modelViewer {
     width: 100%;
+  }
+
+  .round,
+  .rectangle {
+    width: 30px;
+    height: 30px;
   }
 }
