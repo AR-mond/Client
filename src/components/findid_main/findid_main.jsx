@@ -8,8 +8,8 @@ const FindidMain = () => {
                 <div className={styles.box}>
                     <div className={styles.find}>
                         <div className={styles.idpw}>
-                        <div className={styles.id}>아이디 찾기</div>
-                        <div className={styles.pw}>비밀번호 찾기</div>
+                            <div className={styles.id}>아이디 찾기</div>
+                            <div className={styles.pw}>비밀번호 찾기</div>
                         </div>
                     </div>
                     <div className={styles.method}>아이디를 찾는 방법을 선택해 주세요</div>

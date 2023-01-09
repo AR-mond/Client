@@ -8,7 +8,10 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <span className={styles.team_name}>
+        <span className={styles.team_name}
+          onClick={() => {
+            navigate('/');
+          }}>
           <span className={styles.team_name_highlight}>AR</span>MOND
         </span>
         <ul className={styles.menu}>

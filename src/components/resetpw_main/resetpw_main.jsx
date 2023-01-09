@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './resetpw_main.module.css';
 
 const ResetpwMain = () => {
+    const navigate = useNavigate();
+
     return (
         <section className={styles.main}>
             <div className={styles.container}>비밀번호 재설정
@@ -18,7 +21,11 @@ const ResetpwMain = () => {
                             placeholder="비밀번호 재입력"/>
                     </div>
                     <div>
-                        <button className={styles.pwbtn}>비밀번호 재설정</button>
+                        <button 
+                            onClick={() => {
+                                navigate('/changepw');
+                            }}
+                            className={styles.pwbtn}>비밀번호 재설정</button>
                     </div>
                 </div>
             </div>
