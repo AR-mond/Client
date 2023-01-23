@@ -4,6 +4,7 @@ import styles from './ar_main.module.css';
 const ArMain = ({ toggleState }) => {
   const modelViewerRef = useRef();
 
+  // 텍스쳐 컨트롤
   const handleTexture = async e => {
     const material = modelViewerRef.current.model.materials[0].normalTexture;
 
@@ -17,6 +18,7 @@ const ArMain = ({ toggleState }) => {
     }
   };
 
+  // 색상 컨트롤
   const handleColor = e => {
     if (e.target.tagName !== 'LI') return;
     const material = modelViewerRef.current.model.materials[0];

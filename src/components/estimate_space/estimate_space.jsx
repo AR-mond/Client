@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Modal from '../modal/modal';
 import styles from './estimate_space.module.css';
 
-const EstimateSpace = ({ onAdd, open }) => {
+const EstimateSpace = ({ onAdd, handleModal }) => {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [material, setMeterial] = useState('ABS');
@@ -14,10 +14,12 @@ const EstimateSpace = ({ onAdd, open }) => {
 
   const fileInput = useRef(null);
 
+  // '파일 추가' 버튼 클릭 시 fileInput 클릭 이벤트 발생
   const handleFileButtonClick = e => {
     fileInput.current.click();
   };
 
+  // fileInput에서 특정 파일 선택하면 fileurl과 file 저장
   const handleChange = e => {
     const url = window.URL.createObjectURL(e.target.files[0]);
     setFileURL(url);
@@ -25,6 +27,7 @@ const EstimateSpace = ({ onAdd, open }) => {
     console.log(e.target.files[0]);
   };
 
+  // 초기화
   const init = () => {
     setFile(null);
     setIsCleanCheck(true);
@@ -32,6 +35,7 @@ const EstimateSpace = ({ onAdd, open }) => {
     setNums(1);
   };
 
+  // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
     if (file !== null) {
       onAdd({
@@ -52,26 +56,26 @@ const EstimateSpace = ({ onAdd, open }) => {
     }
   };
 
+  // 후처리 여부(isCleanCheck) 컨트롤
   const handleCleanCheck = () => {
     setIsCleanCheck(!isCleanCheck);
   };
 
+  // 도색 여부(isPaintingCheck) 컨트롤
   const handlePaintingCheck = () => {
     setIsPaintingCheck(!isPaintingCheck);
   };
 
+  // 수량(nums) plus 컨트롤
   const handlePlusNums = () => {
     setNums(nums + 1);
   };
 
+  // 수량(nums) minus 컨트롤
   const handleMinusNums = () => {
     if (nums > 1) {
       setNums(nums - 1);
     }
-  };
-
-  const handleOpen = () => {
-    open(true);
   };
 
   return (
@@ -82,6 +86,7 @@ const EstimateSpace = ({ onAdd, open }) => {
             파일 선택
           </div>
         ) : (
+          // stl로 가능하게 변경해야함 - 공부중...    https://www.viewstl.com/plugin/
           <model-viewer
             alt="sample"
             // ar-rotate
@@ -150,7 +155,13 @@ const EstimateSpace = ({ onAdd, open }) => {
           <div className={styles.add_btn} onClick={handleAddFile}>
             파일 추가
           </div>
-          <div className={styles.ar_btn} onClick={handleOpen}>
+          <div
+            className={styles.ar_btn}
+            onClick={() => {
+              // 파일이 업로드 되어야만 모달 open 가능
+              if (file !== null) handleModal(true);
+            }}
+          >
             AR로 실측확인
           </div>
         </div>

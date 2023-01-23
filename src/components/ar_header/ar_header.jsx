@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import styles from './ar_header.module.css';
 
-const ArHeader = ({ modelName, designerName, toggleState }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const ArHeader = ({ modelName, designerName, toggleState, handleToggle }) => {
+  // 폰 사이즈에서 나타나는 토글 버튼 컨트롤
   const handleToggleBtn = () => {
-    setIsOpen(a => {
-      toggleState(!a);
-      return !a;
-    });
+    handleToggle(!toggleState);
   };
 
   return (

@@ -1,13 +1,15 @@
 import React, { useMemo } from 'react';
 import EstimateTable from '../estimate_table/estimate_table';
 import EstimateSpace from '../estimate_space/estimate_space';
-import HomeHeader from '../header/header';
+import Header from '../header/header';
 import styles from './estimate.module.css';
 import { useState } from 'react';
 import Modal from '../modal/modal';
 
 const Estimate = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  // 리액트 테이블 column
   const columns = useMemo(
     () => [
       {
@@ -46,6 +48,7 @@ const Estimate = () => {
     []
   );
 
+  // 임의 데이터 집합
   const [data, setData] = useState([
     {
       name: 'Jordy.stl',
@@ -82,6 +85,7 @@ const Estimate = () => {
     });
   }, [data]);
 
+  // 모델링 파일 정보를 데이터 집합 data에 추가
   const handleAdd = file => {
     setData(datas => {
       const updated = [...datas];
@@ -91,26 +95,29 @@ const Estimate = () => {
     console.log(data);
   };
 
-  const handleModal = isOpen => {
-    setModalOpen(isOpen);
-  };
+  // const handleModal = isOpen => {
+  //   setModalOpen(isOpen);
+  // };
 
   return (
     <section className={styles.estimate}>
-      <HomeHeader />
+      <Header />
       <div className={styles.container}>
         {/* <h5 className={styles.step_name}>파일 업로드</h5> */}
         <img src="icon/step1.svg" alt="language"></img>
         <div className={styles.title}>실시간 견적확인</div>
         <div className={styles.info}>원하시는 출력물의 견적을 받아보세요</div>
       </div>
-      <EstimateSpace onAdd={handleAdd} open={handleModal} />
+      <EstimateSpace
+        onAdd={handleAdd}
+        handleModal={open => setModalOpen(open)}
+      />
       <EstimateTable columns={columns} data={files} />
       <div className={styles.btns}>
         <div className={styles.caustion_btn}>견적 주의사항</div>
         <div className={styles.request_btn}>견적 요청</div>
       </div>
-      <Modal isOpen={modalOpen} close={handleModal} />
+      <Modal isOpen={modalOpen} handleClose={close => setModalOpen(close)} />
     </section>
   );
 };
