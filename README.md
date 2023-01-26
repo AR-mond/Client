@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Ar2Art
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Page 구성
 
-## Available Scripts
+1. Home - https://ar2art.kro.kr/
+2. Estimate - https://ar2art.kro.kr/estimate 🔥
+3. Ar - https://ar2art.kro.kr/ar 🔥
+4. Login - https://ar2art.kro.kr/login
+5. FindId - https://ar2art.kro.kr/findid
+6. SignUp - https://ar2art.kro.kr/join
 
-In the project directory, you can run:
+🔥 - 핵심 페이지
 
-### `npm start`
+### 진행 상황
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 1(Home) - UI 작업 완료
+- 2(Estimate) - https://www.viewstl.com/plugin/ 참고하면서 react에 어떻게 적용할 수 있을 지 공부중...
+- 3(Ar) - 특정 모델링 파일을 사용하여 페이지 구현 -> 나중에는 사용자가 올린 모델링 파일마다 다른 ar 페이지를 구현해야 함
+- 4,5,6 - UI 완료, but 기능은 아직..
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+++ src/components 안에 ar, ar_header, ar_main, estimate, estimate_space, estimate_table 폴더만 보셔도 될 것 같습니다!
 
-### `npm test`
+++ model viewer는 public/index.html파일에 import해서 사용 가능하도록 했습니다.
+https://modelviewer.dev/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+++ react에 있는 stlViewer 라이브러리를 사용하려도 했더니 model viewer와 충돌이 일어나서 실무자님이 보내주신 코드와 https://www.viewstl.com/plugin/ 참고하면서 react에 어떻게 잘 적용할 지 공부중에 있습니다.
