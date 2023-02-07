@@ -53,9 +53,15 @@ const LoginMain = () => {
                     <div className={styles.sns}>SNS로 간편하게 시작하기</div>
                     <div className={styles.snslogo}>
                         <div className={styles.ngk}>
-                        <div className={styles.naver}>N</div>
-                        <div className={styles.google}>G</div>
-                        <div className={styles.kakao}>K</div>
+                        <div className={styles.naver}>
+                            <img className={styles.logoimgn} src="images/logo_naver.png" alt="N" />
+                        </div>
+                        <div className={styles.google}>
+                            <img className={styles.logoimgg} src="images/logo_google.png" alt="G" />
+                        </div>
+                        <div className={styles.kakao}>
+                            <img className={styles.logoimgk} src="images/logo_kakao.png" alt="K" />
+                        </div>
                         </div>
                     </div>
                     <div className={styles.nosns}>계정이 없으신가요?</div>

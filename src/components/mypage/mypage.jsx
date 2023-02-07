@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../header/header';
-import MypageMain from '../mypage_main/mypage_main';
+import MypageMenu from '../mypage_menu/mypage_menu';
 
 const Mypage = () => {
   return (
     <>
       <Header />
-      <MypageMain />
+      <MypageMenu />
     </>
   );
 };

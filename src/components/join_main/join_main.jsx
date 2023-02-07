@@ -8,9 +8,10 @@ const JoinMain = () => {
                 <div className={styles.box}>
                     <div className={styles.title}>아이디</div>
                     <div className={styles.inputtitle}>
-                            <input
-                                className={styles.input}
-                                placeholder="아이디를 입력하세요"/>
+                        <input
+                            className={styles.input}
+                            placeholder="아이디를 입력하세요"/>
+                        <button className={styles.numberbtn}>중복확인</button>
                     </div>
                     <div className={styles.wrong}>필수 정보입니다</div>
                     <div className={styles.title}>비밀번호</div>
@@ -43,7 +44,7 @@ const JoinMain = () => {
                     <div className={styles.wrong}>이메일 주소를 다시 확인해주세요</div>
                     <div className={styles.title}>휴대전화</div>
                     <div className={styles.number}>
-                        <div className={styles.inputtitlenumber}>
+                        <div className={styles.inputtitle}>
                             <input 
                                 className={styles.inputnumber}
                                 placeholder="휴대전화 번호를 입력하세요"/>
