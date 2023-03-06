@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import ArHeader from '../ar_header/ar_header';
-import ArMain from '../ar_main/ar_main';
-import styles from './ar.module.css';
+import ArHeader from '../components/ar_header/ar_header';
+import ArMain from '../components/ar_main/ar_main';
 
 const Ar = () => {
   const [toggleState, setToggleState] = useState(false);

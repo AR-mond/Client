@@ -1,10 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../modal/modal';
 import styles from './estimate_space.module.css';
 
 const EstimateSpace = ({ onAdd, handleModal }) => {
+  const navigate = useNavigate();
+
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [material, setMeterial] = useState('ABS');
@@ -159,7 +162,8 @@ const EstimateSpace = ({ onAdd, handleModal }) => {
             className={styles.ar_btn}
             onClick={() => {
               // 파일이 업로드 되어야만 모달 open 가능
-              if (file !== null) handleModal(true);
+              // if (file !== null) handleModal(true);
+              if (file !== null) navigate('/ar');
             }}
           >
             AR로 실측확인
