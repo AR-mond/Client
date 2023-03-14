@@ -1,14 +1,19 @@
 import React, { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './ar_main.module.css';
 
 const ArMain = ({ toggleState }) => {
+  const location = useLocation();
+  const link = location.state.link.fileURL;
+  console.log(link);
+
   const modelViewerRef = useRef();
 
   // 텍스쳐 컨트롤
   const handleTexture = async e => {
     const material = modelViewerRef.current.model.materials[0].normalTexture;
 
-    if (e.target.value == 'None') {
+    if (e.target.value === 'None') {
       material.setTexture(null);
     } else if (e.target.value) {
       const texture = await modelViewerRef.current.createTexture(
@@ -23,7 +28,7 @@ const ArMain = ({ toggleState }) => {
     if (e.target.tagName !== 'LI') return;
     const material = modelViewerRef.current.model.materials[0];
     const colorString = e.target.dataset.color;
-    if (colorString == 'None') {
+    if (colorString === 'None') {
       material.pbrMetallicRoughness.setBaseColorFactor(null);
     } else {
       material.pbrMetallicRoughness.setBaseColorFactor(colorString);
@@ -40,7 +45,7 @@ const ArMain = ({ toggleState }) => {
           camera-controls
           touch-action="pan-y"
           auto-rotate
-          src="3d/bear_figure.glb"
+          src={link}
           ar
           // stage-light-intensity="3"
           // environment-intensity="2"
@@ -110,7 +115,12 @@ const ArMain = ({ toggleState }) => {
         </div>
         <div className={styles.qr}>
           <div className={styles.qr_title}>스캔하여 AR로 보기</div>
-          <img className={styles.qr_img} src="images/qrcode.jpg" alt="more" />
+          {/* <img className={styles.qr_img} src="images/qrcode.jpg" alt="more" /> */}
+          <img
+            src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar&amp;size=100x100`}
+            alt=""
+            title=""
+          />
         </div>
       </div>
     </section>

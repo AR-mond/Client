@@ -4,11 +4,9 @@ import EstimateSpace from '../estimate_space/estimate_space';
 import Header from '../header/header';
 import styles from './estimate.module.css';
 import { useState } from 'react';
-import Modal from '../modal/modal';
+import TitleSubtitle from '../title_subtitle/title_subtitle';
 
 const Estimate = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   // 리액트 테이블 column
   const columns = useMemo(
     () => [
@@ -102,22 +100,17 @@ const Estimate = () => {
   return (
     <section className={styles.estimate}>
       <Header />
-      <div className={styles.container}>
-        {/* <h5 className={styles.step_name}>파일 업로드</h5> */}
-        <img src="icon/step1.svg" alt="language"></img>
-        <div className={styles.title}>실시간 견적확인</div>
-        <div className={styles.info}>원하시는 출력물의 견적을 받아보세요</div>
-      </div>
-      <EstimateSpace
-        onAdd={handleAdd}
-        handleModal={open => setModalOpen(open)}
+      <TitleSubtitle
+        title="실시간 견적확인"
+        subtitle="원하시는 출력물의 견적을 받아보세요"
       />
+      <EstimateSpace onAdd={handleAdd} />
       <EstimateTable columns={columns} data={files} />
       <div className={styles.btns}>
         <div className={styles.caustion_btn}>견적 주의사항</div>
         <div className={styles.request_btn}>견적 요청</div>
       </div>
-      <Modal isOpen={modalOpen} handleClose={close => setModalOpen(close)} />
+      {/* <Modal isOpen={modalOpen} handleClose={close => setModalOpen(close)} /> */}
     </section>
   );
 };
