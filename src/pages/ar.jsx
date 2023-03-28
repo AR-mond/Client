@@ -12,7 +12,7 @@ const Ar = () => {
   return (
     <>
       <ArHeader
-        modelName={'Bear'}
+        modelName={'Deer'}
         designerName={'Designer'}
         toggleState={toggleState}
         handleToggle={handleToggle}
