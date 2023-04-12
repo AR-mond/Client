@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import styles from './ar_main.module.css';
 
 const ArMain = ({ toggleState }) => {
-  // const location = useLocation();
-  // const link = location.state.link.fileURL;
-  // console.log(link);
+  const location = useLocation();
+  const link = location.state.link.fileURL;
+  console.log(link);
 
   const modelViewerRef = useRef();
 
@@ -45,8 +45,8 @@ const ArMain = ({ toggleState }) => {
           camera-controls
           touch-action="pan-y"
           auto-rotate
-          // src={link}
-          src="3d/deer.glb"
+          src={link}
+          // src="3d/deer.glb"
           ar
           // stage-light-intensity="3"
           // environment-intensity="2"
@@ -116,12 +116,12 @@ const ArMain = ({ toggleState }) => {
         </div>
         <div className={styles.qr}>
           <div className={styles.qr_title}>스캔하여 AR로 보기</div>
-          <img className={styles.qr_img} src="images/qrcode.jpg" alt="more" />
-          {/* <img
+          {/* <img className={styles.qr_img} src="images/qrcode.jpg" alt="more" /> */}
+          <img
             src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar&amp;size=100x100`}
             alt=""
             title=""
-          /> */}
+          />
         </div>
       </div>
     </section>
