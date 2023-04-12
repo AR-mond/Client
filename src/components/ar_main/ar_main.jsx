@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import styles from './ar_main.module.css';
 
 const ArMain = ({ toggleState }) => {
-  const location = useLocation();
-  const link = location.state.link.fileURL;
+  // const location = useLocation();
+  // const link = location.state.link.fileURL;
   // console.log(link);
 
   const modelViewerRef = useRef();
