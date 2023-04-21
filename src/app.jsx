@@ -8,7 +8,7 @@ import Changepw from './components/changepw/changepw';
 import Joinfin from './components/joinfin/joinfin';
 import Join from './pages/join';
 import Mypage from './components/mypage/mypage';
-import styles from './app.module.css';
+import './app.css';
 import Test1 from './components/test1/test1';
 import Estimate from './components/estimate/estimate';
 import Ar from './pages/ar';

@@ -2,11 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Modal from '../modal/modal';
 import styles from './estimate_space.module.css';
+import { StlViewer } from 'react-stl-viewer';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
+  const stlRef = useRef();
+  // console.log(stlRef);
 
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
@@ -89,22 +91,31 @@ const EstimateSpace = ({ onAdd }) => {
             파일 선택
           </div>
         ) : (
-          // stl로 가능하게 변경해야함 - 공부중...    https://www.viewstl.com/plugin/
-          <model-viewer
-            alt="sample"
-            // ar-rotate
-            camera-controls
-            touch-action="pan-y"
-            auto-rotate
-            src={fileURL}
-            ar
-            // stage-light-intensity="3"
-            // environment-intensity="2"
-          ></model-viewer>
+          // <model-viewer
+          //   alt="sample"
+          //   // ar-rotate
+          //   camera-controls
+          //   touch-action="pan-y"
+          //   auto-rotate
+          //   src={fileURL}
+          //   ar
+          //   // stage-light-intensity="3"
+          //   // environment-intensity="2"
+          // ></model-viewer>
+          <StlViewer
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+            orbitControls
+            shadows
+            url={fileURL}
+            ref={stlRef}
+          />
         )}
         <input
           type="file"
-          accept=".gltf, .glb"
+          accept=".stl, .gltf, .glb"
           ref={fileInput}
           onChange={handleChange}
           style={{ display: 'none' }}
@@ -164,6 +175,7 @@ const EstimateSpace = ({ onAdd }) => {
               if (file !== null)
                 navigate('/ar', {
                   state: {
+                    // fileURL을 gltf나 glb로 변경하는 과정 필요!!
                     link: { fileURL },
                   },
                 });
