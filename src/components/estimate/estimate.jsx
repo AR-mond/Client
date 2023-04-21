@@ -4,7 +4,6 @@ import EstimateSpace from '../estimate_space/estimate_space';
 import Header from '../header/header';
 import styles from './estimate.module.css';
 import { useState } from 'react';
-import TitleSubtitle from '../title_subtitle/title_subtitle';
 
 const Estimate = () => {
   // 리액트 테이블 column
@@ -48,40 +47,29 @@ const Estimate = () => {
 
   // 임의 데이터 집합
   const [data, setData] = useState([
-    {
-      name: 'Jordy.stl',
-      size: '21x11x14 cm',
-      volume: '1467cm^3',
-      material: 'ABS',
-      isClean: true,
-      isPaint: true,
-      nums: 1,
-      price: '1,000,000원',
-      file: {},
-    },
-    {
-      name: 'Jordy.stl',
-      size: '21x11x14 cm',
-      volume: '1467cm^3',
-      material: 'ABS',
-      isClean: true,
-      isPaint: true,
-      nums: 1,
-      price: '1,000,000원',
-      file: {},
-    },
+    // {
+    //   name: 'Jordy.stl',
+    //   size: '21x11x14 cm',
+    //   volume: '1467cm^3',
+    //   material: 'ABS',
+    //   isClean: true,
+    //   isPaint: true,
+    //   nums: 1,
+    //   price: '1,000,000원',
+    //   file: {},
+    // },
+    // {
+    //   name: 'Jordy.stl',
+    //   size: '21x11x14 cm',
+    //   volume: '1467cm^3',
+    //   material: 'ABS',
+    //   isClean: true,
+    //   isPaint: true,
+    //   nums: 1,
+    //   price: '1,000,000원',
+    //   file: {},
+    // },
   ]);
-
-  const files = useMemo(() => {
-    // data는 바뀌면 안 되는데 data의 boolean값이 string으로 바뀌는 문제 - 나중에 해결해보기!!!!
-    const a = [...data];
-    return a.map(item => {
-      item.isClean = item.isClean ? 'O' : 'X';
-      item.isPaint = item.isPaint ? 'O' : 'X';
-      console.log(item);
-      return item;
-    });
-  }, [data]);
 
   // 모델링 파일 정보를 데이터 집합 data에 추가
   const handleAdd = file => {
@@ -90,7 +78,6 @@ const Estimate = () => {
       updated.push(file);
       return updated;
     });
-    console.log(data);
   };
 
   // const handleModal = isOpen => {
@@ -100,12 +87,10 @@ const Estimate = () => {
   return (
     <section className={styles.estimate}>
       <Header />
-      <TitleSubtitle
-        title="실시간 견적확인"
-        subtitle="원하시는 출력물의 견적을 받아보세요"
-      />
+      <p className={styles.title}>실시간 견적확인</p>
+      <p className={styles.subtitle}>원하시는 출력물의 견적을 받아보세요</p>
       <EstimateSpace onAdd={handleAdd} />
-      <EstimateTable columns={columns} data={files} />
+      <EstimateTable columns={columns} data={data} />
       <div className={styles.btns}>
         <div className={styles.caustion_btn}>견적 주의사항</div>
         <div className={styles.request_btn}>견적 요청</div>

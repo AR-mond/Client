@@ -7,17 +7,17 @@ import { StlViewer } from 'react-stl-viewer';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
-  const stlRef = useRef();
-  // console.log(stlRef);
+
+  const fileInput = useRef(null);
+  const selectRef = useRef(null);
 
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
+  const [fileInfo, setFileInfo] = useState({});
   const [material, setMeterial] = useState('ABS');
   const [nums, setNums] = useState(1);
   const [isCleanCheck, setIsCleanCheck] = useState(true);
   const [isPaintingCheck, setIsPaintingCheck] = useState(true);
-
-  const fileInput = useRef(null);
 
   // '파일 추가' 버튼 클릭 시 fileInput 클릭 이벤트 발생
   const handleFileButtonClick = e => {
@@ -29,7 +29,6 @@ const EstimateSpace = ({ onAdd }) => {
     const url = window.URL.createObjectURL(e.target.files[0]);
     setFileURL(url);
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   // 초기화
@@ -38,19 +37,25 @@ const EstimateSpace = ({ onAdd }) => {
     setIsCleanCheck(true);
     setIsPaintingCheck(true);
     setNums(1);
+    setMeterial('ABS');
+    fileInput.current.value = null;
+    selectRef.current.value = 'ABS';
   };
 
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
+    const x = Math.round(fileInfo.width);
+    const y = Math.round(fileInfo.height);
+    const z = Math.round(fileInfo.length);
     if (file !== null) {
       onAdd({
         // id:
         name: file.name,
-        size: '21x11x14 cm',
-        volume: '1467cm^3',
-        material: 'ABS',
-        isClean: isCleanCheck,
-        isPaint: isPaintingCheck,
+        size: `${x} x ${y} x ${z} cm`,
+        volume: '임의값',
+        material: material,
+        isClean: isCleanCheck ? 'O' : 'X',
+        isPaint: isPaintingCheck ? 'O' : 'X',
         nums,
         price: '1,000,000원',
         file: file,
@@ -109,10 +114,11 @@ const EstimateSpace = ({ onAdd }) => {
             }}
             orbitControls
             shadows
+            onFinishLoading={info => setFileInfo(info)}
             url={fileURL}
-            ref={stlRef}
           />
         )}
+
         <input
           type="file"
           accept=".stl, .gltf, .glb"
@@ -124,11 +130,15 @@ const EstimateSpace = ({ onAdd }) => {
       <div className={styles.info}>
         <div className={styles.material}>
           <div className={styles.material_title}>소재</div>
-          <select className={styles.material_selectbox}>
-            <option key="normarl" value="normarl">
+          <select
+            className={styles.material_selectbox}
+            onChange={e => setMeterial(e.target.value)}
+            ref={selectRef}
+          >
+            <option key="ABS" value="ABS">
               ABS
             </option>
-            <option key="ABS" value="ABS">
+            <option key="normarl" value="일반 레진">
               일반 레진
             </option>
           </select>
