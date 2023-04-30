@@ -4,13 +4,14 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './estimate_space.module.css';
 import { StlViewer } from 'react-stl-viewer';
+import * as THREE from 'three';
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
 
   const fileInput = useRef(null);
   const selectRef = useRef(null);
-
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [fileInfo, setFileInfo] = useState({});
@@ -18,6 +19,7 @@ const EstimateSpace = ({ onAdd }) => {
   const [nums, setNums] = useState(1);
   const [isCleanCheck, setIsCleanCheck] = useState(true);
   const [isPaintingCheck, setIsPaintingCheck] = useState(true);
+  const [volume, setVolume] = useState();
 
   // '파일 추가' 버튼 클릭 시 fileInput 클릭 이벤트 발생
   const handleFileButtonClick = e => {
@@ -29,6 +31,12 @@ const EstimateSpace = ({ onAdd }) => {
     const url = window.URL.createObjectURL(e.target.files[0]);
     setFileURL(url);
     setFile(e.target.files[0]);
+
+    const loader = new STLLoader();
+    loader.load(url, geometry => {
+      const volume = Math.round(calculateVolume(geometry));
+      setVolume(volume);
+    });
   };
 
   // 초기화
@@ -42,6 +50,44 @@ const EstimateSpace = ({ onAdd }) => {
     selectRef.current.value = 'ABS';
   };
 
+  function calculateVolume(geometry) {
+    if (!geometry.isBufferGeometry) {
+      console.log(
+        "'geometry' must be an indexed or non-indexed buffer geometry"
+      );
+      return 0;
+    }
+    var isIndexed = geometry.index !== null;
+    let position = geometry.attributes.position;
+    let sum = 0;
+    let p1 = new THREE.Vector3(),
+      p2 = new THREE.Vector3(),
+      p3 = new THREE.Vector3();
+    if (!isIndexed) {
+      let faces = position.count / 3;
+      for (let i = 0; i < faces; i++) {
+        p1.fromBufferAttribute(position, i * 3 + 0);
+        p2.fromBufferAttribute(position, i * 3 + 1);
+        p3.fromBufferAttribute(position, i * 3 + 2);
+        sum += signedVolumeOfTriangle(p1, p2, p3);
+      }
+    } else {
+      let index = geometry.index;
+      let faces = index.count / 3;
+      for (let i = 0; i < faces; i++) {
+        p1.fromBufferAttribute(position, index.array[i * 3 + 0]);
+        p2.fromBufferAttribute(position, index.array[i * 3 + 1]);
+        p3.fromBufferAttribute(position, index.array[i * 3 + 2]);
+        sum += signedVolumeOfTriangle(p1, p2, p3);
+      }
+    }
+    return sum;
+  }
+
+  function signedVolumeOfTriangle(p1, p2, p3) {
+    return p1.dot(p2.cross(p3)) / 6.0;
+  }
+
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
     const x = Math.round(fileInfo.width);
@@ -52,13 +98,13 @@ const EstimateSpace = ({ onAdd }) => {
         // id:
         name: file.name,
         size: `${x} x ${y} x ${z} cm`,
-        volume: '임의값',
-        material: material,
+        volume: `${volume} cm³`,
+        material,
         isClean: isCleanCheck ? 'O' : 'X',
         isPaint: isPaintingCheck ? 'O' : 'X',
         nums,
         price: '1,000,000원',
-        file: file,
+        file,
       });
       init();
     } else {
