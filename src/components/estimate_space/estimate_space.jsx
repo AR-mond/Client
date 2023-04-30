@@ -26,6 +26,15 @@ const EstimateSpace = ({ onAdd }) => {
     fileInput.current.click();
   };
 
+  const handleDrop = e => {
+    e.preventDefault();
+    // 드롭된 파일 리스트 가져오기
+    const files = [...e.dataTransfer?.files];
+    const url = window.URL.createObjectURL(files[0]);
+    setFileURL(url);
+    setFile(files[0]);
+  };
+
   // fileInput에서 특정 파일 선택하면 fileurl과 file 저장
   const handleChange = e => {
     const url = window.URL.createObjectURL(e.target.files[0]);
@@ -136,11 +145,20 @@ const EstimateSpace = ({ onAdd }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.file_box}>
+      <div
+        className={styles.file_box}
+        onDragOver={e => {
+          e.preventDefault();
+        }}
+        onDrop={handleDrop}
+      >
         {file === null ? (
-          <div className={styles.file_btn} onClick={handleFileButtonClick}>
-            파일 선택
-          </div>
+          <>
+            <div className={styles.file_btn} onClick={handleFileButtonClick}>
+              파일 선택
+            </div>
+            <p>Drag & Drop</p>
+          </>
         ) : (
           // <model-viewer
           //   alt="sample"
