@@ -6,6 +6,7 @@ import styles from './estimate_space.module.css';
 import { StlViewer } from 'react-stl-viewer';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import calculateVolume from '../../service/calc';
+import stlToGltf from '../../service/translater';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
@@ -67,10 +68,10 @@ const EstimateSpace = ({ onAdd }) => {
 
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
-    const x = Math.round(fileInfo.width);
-    const y = Math.round(fileInfo.height);
-    const z = Math.round(fileInfo.length);
     if (file !== null) {
+      const x = Math.round(fileInfo.width);
+      const y = Math.round(fileInfo.height);
+      const z = Math.round(fileInfo.length);
       onAdd({
         // id:
         name: file.name,
@@ -86,6 +87,24 @@ const EstimateSpace = ({ onAdd }) => {
       init();
     } else {
       console.log('파일이 선택되지 않았습니다.');
+      return;
+    }
+  };
+
+  const handleAR = async () => {
+    if (file !== null) {
+      // 1. gltf 변환
+      const gltf = await stlToGltf(fileURL);
+      console.log(gltf);
+      // 2. gltf, stl 파일 POST API 보내기
+
+      // 3. return된 주소URL로 접속하도록 하기!
+
+      navigate('/ar', {
+        state: {
+          link: { fileURL },
+        },
+      });
     }
   };
 
@@ -211,18 +230,7 @@ const EstimateSpace = ({ onAdd }) => {
           <div className={styles.add_btn} onClick={handleAddFile}>
             파일 추가
           </div>
-          <div
-            className={styles.ar_btn}
-            onClick={() => {
-              if (file !== null)
-                navigate('/ar', {
-                  state: {
-                    // fileURL을 gltf나 glb로 변경하는 과정 필요!!
-                    link: { fileURL },
-                  },
-                });
-            }}
-          >
+          <div className={styles.ar_btn} onClick={handleAR}>
             AR로 실측확인
           </div>
         </div>
