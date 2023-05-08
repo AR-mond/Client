@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ArHeader from '../components/ar_header/ar_header';
 import ArMain from '../components/ar_main/ar_main';
+import Header from '../components/header/header';
 
 const Ar = () => {
   const [toggleState, setToggleState] = useState(false);
@@ -11,13 +11,8 @@ const Ar = () => {
 
   return (
     <>
-      <ArHeader
-        modelName={'Deer'}
-        designerName={'Designer'}
-        toggleState={toggleState}
-        handleToggle={handleToggle}
-      />
       <ArMain toggleState={toggleState} />
+      <Header/>
     </>
   );
 };
