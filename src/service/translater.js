@@ -13,7 +13,13 @@ export default async function stlToGltf(stlFileUrl) {
       const exporter = new GLTFExporter();
 
       exporter.parse(scene, gltf => {
-        resolve(gltf);
+        // resolve(gltf);
+        const blob = new Blob([JSON.stringify(gltf)], {
+          type: 'application/octet-stream',
+        });
+        // Blob URL 생성
+        const url = URL.createObjectURL(blob);
+        resolve(url);
       });
     });
   });

@@ -102,7 +102,7 @@ const EstimateSpace = ({ onAdd }) => {
 
       navigate('/ar', {
         state: {
-          link: { fileURL },
+          link: { gltf },
         },
       });
     }
