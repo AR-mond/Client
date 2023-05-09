@@ -1,0 +1,28 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.table {
+    justify-content: center;
+    text-align: center;
+    width: 800px;
+    height: 300px;
+    border: 1px solid black;
+    font-family: 'notoSansKr-medium';
+    margin: auto;
+}
+
+.row {
+    background-color: #F3F3F3;
+    font-size: 14px;
+}
+
+.list {
+    font-size: 14px;
+}
+
+.row1 {
+    width: 10%;
+}
+
+.row3 {
+    width: 15%;
+}
