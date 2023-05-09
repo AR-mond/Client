@@ -13,7 +13,7 @@ import Test1 from './components/test1/test1';
 import Estimate from './components/estimate/estimate';
 import Ar from './pages/ar';
 import NotFound from './pages/notfound';
-import Services from './components/services/services';
+import Intro from './components/intro/intro';
 import Guide from './components/guide/guide';
 import Support from './components/support/support';
 import Portfolio from './components/portfolio/portfolio';
@@ -31,10 +31,10 @@ const router = createBrowserRouter([
   { path: '/mypage', element: <Mypage /> },
   { path: '/test1', element: <Test1 /> },
   { path: '/ar', element: <Ar /> },
-  { path: '/services', element: <Services />},
-  { path: '/guide', element: <Guide />},
-  { path: '/support', element: <Support />},
-  { path: '/portfolio', element: <Portfolio />},
+  { path: '/intro', element: <Intro /> },
+  { path: '/guide', element: <Guide /> },
+  { path: '/support', element: <Support /> },
+  { path: '/portfolio', element: <Portfolio /> },
 ]);
 
 const App = () => {

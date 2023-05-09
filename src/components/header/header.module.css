@@ -39,6 +39,7 @@
 
 .setting {
   display: flex;
+  align-items: center;
   list-style: none;
   margin: 0;
 }
@@ -49,14 +50,15 @@
   cursor: pointer;
 }
 
-.goestimate{
-  border:1px solid;
+.goestimate {
+  border: 1px solid;
   border-radius: 8px;
   margin: 0 1rem;
   cursor: pointer;
   padding: 5px;
+  transition: all 400ms;
 }
 
-.goestimate:hover{
-  background: rgb(255, 178, 29);
+.goestimate:hover {
+  background: armondOrange;
 }

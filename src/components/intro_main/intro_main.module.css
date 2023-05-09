@@ -1,0 +1,175 @@
+@value armondOrange, armondBlack, armondWhite from '../../common/color.css';
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: armondWhite;
+  margin-top: 6rem;
+  margin-bottom: 9rem;
+}
+
+.intro {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: url('../../../public/images/service.png') center/cover no-repeat,
+    rgba(0, 0, 0, 0.47);
+  background-blend-mode: multiply;
+  font-family: 'notoSansKr-medium';
+}
+
+.introe {
+  text-align: center;
+  margin-top: 55px;
+  font-size: 30px;
+  color: armondWhite;
+}
+
+.introk {
+  justify-content: center;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 60px;
+  font-size: 20px;
+  color: armondWhite;
+}
+
+.com {
+  justify-content: center;
+  text-align: center;
+  font-family: 'notoSansKr-medium';
+  padding-top: 100px;
+}
+
+.title {
+  font-size: 25px;
+}
+
+.explain {
+  padding-top: 30px;
+  font-size: 18px;
+}
+
+.logobox {
+  display: flex;
+  margin: 50px auto;
+}
+
+.box1 {
+  display: inline-block;
+  width: 12rem;
+  height: 4rem;
+  border: 1px solid armondBlack;
+  border-radius: 21px;
+  background-image: url('../../../public/images/armond_logo2.png');
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.box2 {
+  display: inline-block;
+  width: 12rem;
+  height: 4rem;
+  border: 1px solid armondBlack;
+  border-radius: 21px;
+  background-image: url('../../../public/images/armond_logo.png');
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-color: armondBlack;
+  background-position: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.text {
+  justify-content: center;
+  text-align: center;
+  font-family: 'notoSansKr-medium';
+  font-size: 15px;
+  padding-bottom: 80px;
+  margin: auto 150px;
+  border-bottom: 2px solid armondBlack;
+}
+
+.processbox {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'notoSansKr-medium';
+  margin: auto;
+  margin-top: 40px;
+}
+
+.process {
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+  padding: 5px 5px;
+  font-size: 13px;
+}
+
+.box {
+  display: flex;
+  width: 53.454px;
+}
+
+.imgbox {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.img1 {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  background-image: url('../../../public/images/process1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid armondBlack;
+  margin: 20px;
+}
+
+.img3 {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  background-image: url('../../../public/images/process3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid armondBlack;
+  margin: 20px;
+}
+
+.img4 {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  background-image: url('../../../public/images/process4.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid armondBlack;
+  margin: 20px;
+}
+
+.img5 {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  background-image: url('../../../public/images/service.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid armondBlack;
+  margin: 20px;
+}

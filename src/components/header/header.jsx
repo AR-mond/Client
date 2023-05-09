@@ -17,35 +17,46 @@ const Header = () => {
           <span className={styles.team_name_highlight}>AR</span>MOND
         </span>
         <ul className={styles.menu}>
-
           <li
             className={styles.menu_item}
             onClick={() => {
-              navigate('/services');
+              navigate('/intro');
             }}
-            >소개</li>
-          <li className={styles.menu_item}
+          >
+            소개
+          </li>
+          <li
+            className={styles.menu_item}
             onClick={() => {
               navigate('/guide');
             }}
-            >가이드</li>
-          <li className={styles.menu_item}
+          >
+            가이드
+          </li>
+          <li
+            className={styles.menu_item}
             onClick={() => {
               navigate('/support');
-            }}>고객 지원</li>
-          <li className={styles.menu_item}
+            }}
+          >
+            고객 지원
+          </li>
+          <li
+            className={styles.menu_item}
             onClick={() => {
               navigate('/portfolio');
-            }}>포트폴리오</li>
-
+            }}
+          >
+            포트폴리오
+          </li>
         </ul>
       </div>
       <ul className={styles.setting}>
-      <li 
-        className={styles.goestimate}
-        onClick={() =>{
-          navigate('/estimate')
-        }}
+        <li
+          className={styles.goestimate}
+          onClick={() => {
+            navigate('/estimate');
+          }}
         >
           <div>견적요청</div>
         </li>
