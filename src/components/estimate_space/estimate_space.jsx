@@ -4,8 +4,9 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './estimate_space.module.css';
 import { StlViewer } from 'react-stl-viewer';
-import * as THREE from 'three';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
+import calculateVolume from '../../service/calc';
+import stlToGltf from '../../service/translater';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
@@ -33,6 +34,12 @@ const EstimateSpace = ({ onAdd }) => {
     const url = window.URL.createObjectURL(files[0]);
     setFileURL(url);
     setFile(files[0]);
+
+    const loader = new STLLoader();
+    loader.load(url, geometry => {
+      const volume = Math.round(calculateVolume(geometry));
+      setVolume(volume);
+    });
   };
 
   // fileInput에서 특정 파일 선택하면 fileurl과 file 저장
@@ -59,50 +66,12 @@ const EstimateSpace = ({ onAdd }) => {
     selectRef.current.value = 'ABS';
   };
 
-  function calculateVolume(geometry) {
-    if (!geometry.isBufferGeometry) {
-      console.log(
-        "'geometry' must be an indexed or non-indexed buffer geometry"
-      );
-      return 0;
-    }
-    var isIndexed = geometry.index !== null;
-    let position = geometry.attributes.position;
-    let sum = 0;
-    let p1 = new THREE.Vector3(),
-      p2 = new THREE.Vector3(),
-      p3 = new THREE.Vector3();
-    if (!isIndexed) {
-      let faces = position.count / 3;
-      for (let i = 0; i < faces; i++) {
-        p1.fromBufferAttribute(position, i * 3 + 0);
-        p2.fromBufferAttribute(position, i * 3 + 1);
-        p3.fromBufferAttribute(position, i * 3 + 2);
-        sum += signedVolumeOfTriangle(p1, p2, p3);
-      }
-    } else {
-      let index = geometry.index;
-      let faces = index.count / 3;
-      for (let i = 0; i < faces; i++) {
-        p1.fromBufferAttribute(position, index.array[i * 3 + 0]);
-        p2.fromBufferAttribute(position, index.array[i * 3 + 1]);
-        p3.fromBufferAttribute(position, index.array[i * 3 + 2]);
-        sum += signedVolumeOfTriangle(p1, p2, p3);
-      }
-    }
-    return sum;
-  }
-
-  function signedVolumeOfTriangle(p1, p2, p3) {
-    return p1.dot(p2.cross(p3)) / 6.0;
-  }
-
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
-    const x = Math.round(fileInfo.width);
-    const y = Math.round(fileInfo.height);
-    const z = Math.round(fileInfo.length);
     if (file !== null) {
+      const x = Math.round(fileInfo.width);
+      const y = Math.round(fileInfo.height);
+      const z = Math.round(fileInfo.length);
       onAdd({
         // id:
         name: file.name,
@@ -118,6 +87,24 @@ const EstimateSpace = ({ onAdd }) => {
       init();
     } else {
       console.log('파일이 선택되지 않았습니다.');
+      return;
+    }
+  };
+
+  const handleAR = async () => {
+    if (file !== null) {
+      // 1. gltf 변환
+      const gltf = await stlToGltf(fileURL);
+      console.log(gltf);
+      // 2. gltf, stl 파일 POST API 보내기
+
+      // 3. return된 주소URL로 접속하도록 하기!
+
+      navigate('/ar', {
+        state: {
+          link: { fileURL },
+        },
+      });
     }
   };
 
@@ -243,18 +230,7 @@ const EstimateSpace = ({ onAdd }) => {
           <div className={styles.add_btn} onClick={handleAddFile}>
             파일 추가
           </div>
-          <div
-            className={styles.ar_btn}
-            onClick={() => {
-              if (file !== null)
-                navigate('/ar', {
-                  state: {
-                    // fileURL을 gltf나 glb로 변경하는 과정 필요!!
-                    link: { fileURL },
-                  },
-                });
-            }}
-          >
+          <div className={styles.ar_btn} onClick={handleAR}>
             AR로 실측확인
           </div>
         </div>

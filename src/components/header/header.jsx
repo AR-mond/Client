@@ -17,6 +17,7 @@ const Header = () => {
           <span className={styles.team_name_highlight}>AR</span>MOND
         </span>
         <ul className={styles.menu}>
+
           <li
             className={styles.menu_item}
             onClick={() => {
@@ -36,10 +37,18 @@ const Header = () => {
             onClick={() => {
               navigate('/portfolio');
             }}>포트폴리오</li>
+
         </ul>
       </div>
-
       <ul className={styles.setting}>
+      <li 
+        className={styles.goestimate}
+        onClick={() =>{
+          navigate('/estimate')
+        }}
+        >
+          <div>견적요청</div>
+        </li>
         <li
           className={styles.setting_item}
           onClick={() => {

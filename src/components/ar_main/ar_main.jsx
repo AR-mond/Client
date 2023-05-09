@@ -1,39 +1,66 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './ar_main.module.css';
+import{
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  EmailShareButton,
+  EmailIcon
+} from 'react-share';
+import {ChromePicker} from "react-color";
+import Modal from '../ar_modal/ar_modal';
 
-const ArMain = ({ toggleState }) => {
+const ArMain = ({ toggleState, handleToggle }) => {
   const location = useLocation();
   const link = location.state.link.fileURL;
   console.log(link);
 
-  const modelViewerRef = useRef();
+  const handleToggleBtn = () => {
+    handleToggle(!toggleState);
+  };
 
+  const modelViewerRef = useRef();
+  
   // 텍스쳐 컨트롤
   const handleTexture = async e => {
-    const material = modelViewerRef.current.model.materials[0].normalTexture;
-
-    if (e.target.value === 'None') {
-      material.setTexture(null);
-    } else if (e.target.value) {
-      const texture = await modelViewerRef.current.createTexture(
-        e.target.value
-      );
-      material.setTexture(texture);
+    const value = e.target.getAttribute('value');
+    const material = modelViewerRef.current.model.materials[0];
+    const pbrMaterial = material.pbrMetallicRoughness;
+  
+    if (value === 'images/ar_texture/Aluminum.jpg') {
+      pbrMaterial.setRoughnessFactor(0);
+      pbrMaterial.setMetallicFactor(1);
+      const texture = await modelViewerRef.current.createTexture(value);
+      material.normalTexture.setTexture(texture);
+    } else {
+      pbrMaterial.setRoughnessFactor(1);
+      pbrMaterial.setMetallicFactor(0);
+      if (value === 'None') {
+        material.normalTexture.setTexture(null);
+      } else {
+        const texture = await modelViewerRef.current.createTexture(value);
+        material.normalTexture.setTexture(texture);
+      }
     }
   };
 
-  // 색상 컨트롤
-  const handleColor = e => {
-    if (e.target.tagName !== 'LI') return;
+  //색
+  const [color, setColor] = useState('#FFFFFF');
+  const handleColor = (newColor) => {
     const material = modelViewerRef.current.model.materials[0];
-    const colorString = e.target.dataset.color;
-    if (colorString === 'None') {
+    if (newColor.rgb.a === 0) {
       material.pbrMetallicRoughness.setBaseColorFactor(null);
     } else {
+      const colorString = `rgba(${newColor.rgb.r}, ${newColor.rgb.g}, ${newColor.rgb.b}, ${newColor.rgb.a})`;
       material.pbrMetallicRoughness.setBaseColorFactor(colorString);
     }
+    setColor(newColor.hex);
   };
+
+  // URL 공유
+  const shareUrl = 'http://ar2art.kro.kr/';
 
   return (
     <section className={styles.main}>
@@ -44,84 +71,90 @@ const ArMain = ({ toggleState }) => {
           // ar-rotate
           camera-controls
           touch-action="pan-y"
-          auto-rotate
           src={link}
-          // src="3d/deer.glb"
+          //src="3d/deer.glb"
           ar
-          // stage-light-intensity="3"
-          // environment-intensity="2"
-        ></model-viewer>
-      </div>
-      <div className={`${styles.info} ${toggleState ? styles.active : null}`}>
-        <div className={styles.size}>
-          <div className={styles.size_title}>모델 크기</div>
+        >
+          <div className={styles.size}>
+          <div className={styles.size_title}>
+            <img src="icon/cube.svg" alt="cube"></img>
+            <span className={styles.titles}>모델 정보</span>
+            </div>
           <div className={styles.x_size}>X길이(Length): 1201</div>
           <div className={styles.y_size}>Y너비(Width): 990</div>
           <div className={styles.z_size}>Z높이(Height): 1890</div>
+          <div className={styles.v_size}>부피(Volume): 3090</div>
         </div>
-        <div className={styles.color}>
-          <div className={styles.color_title}>단색 색상</div>
-          <ul className={styles.colors} onClick={handleColor}>
-            <li
-              data-color="#FF6C6C"
-              className={`${styles.color1} ${styles.round}`}
-            ></li>
-            <li
-              data-color="#FDB433"
-              className={`${styles.color2} ${styles.round}`}
-            ></li>
-            <li
-              data-color="#F0FF6C"
-              className={`${styles.color3} ${styles.round}`}
-            ></li>
-            <li
-              data-color="#FF96F8"
-              className={`${styles.color4} ${styles.round}`}
-            ></li>
-            <li
-              data-color="None"
+        <Modal />
+        <div className={styles.toggle_btn} onClick={handleToggleBtn}>
+        <div className={styles.toggle_btn_fab}>+</div>
+      </div>
+      </model-viewer>
+      </div>
+      <div className={`${styles.info} ${toggleState ? styles.active : null}`}>
+        
+        <div className={styles.custom}>
+          <div className={styles.custom_title}>
+          <img src="icon/custom.svg" alt="custom"></img>
+          <span className={styles.titles}>모델 커스텀</span>
+          </div>
+          <div className={styles.color}>
+            <div className={styles.color_title}>단색 색상</div>
+            <div className={styles.colorpicker}>
+            <ChromePicker 
+            color = {color}
+            onChange={handleColor}
+            disableAlpha={true}
+            />
+            </div>
+        
+          </div>
+
+          <div className={styles.texture}>
+            <div className={styles.texture_title}>텍스쳐</div>
+            <ul className={styles.textures} onClick={handleTexture}>
+              <li 
+              value="images/ar_texture/Asphalt.jpg" 
+              className={`${styles.texture1} ${styles.round}`}
+              >As</li>
+              <li 
+              value="images/ar_texture/Aluminum.jpg" 
+              className={`${styles.texture2} ${styles.round}`}
+              >Al</li>
+              <li 
+              value="images/ar_texture/Wood.jpg" 
+              className={`${styles.texture3} ${styles.round}`}
+              >W</li>
+              <li 
+              value="images/ar_texture/5.png" 
+              className={`${styles.texture4} ${styles.round}`}
+              >T</li>
+              <li 
+              value="None" 
               className={`${styles.default_color} ${styles.round}`}
-            >
-              <div className={styles.diagonal}></div>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.texture}>
-          <div className={styles.texture_title}>텍스쳐</div>
-          <select className={styles.textures} onChange={handleTexture}>
-            <option>None</option>
-            <option value="images/ar_texture/Aluminum.jpg">Aluminum</option>
-            <option value="images/ar_texture/Asphalt.jpg">Asphalt</option>
-            <option value="images/ar_texture/Wood.jpg">Wood</option>
-            {/* <option value="images/ar_texture/4.png">D</option>
-            <option value="images/ar_texture/5.png">E</option> */}
-          </select>
-          {/* <ul className={styles.textures} onClick={handleTexture}>
-            <li key="1" className={styles.rectangle}>
-              A
-            </li>
-            <li key="2" className={styles.rectangle}>
-              B
-            </li>
-            <li key="3" className={styles.rectangle}>
-              C
-            </li>
-            <li key="4" className={styles.rectangle}>
-              D
-            </li>
-            <li key="5" className={styles.rectangle}>
-              E
-            </li>
-          </ul> */}
+              >P</li>
+            </ul>
+          </div>
         </div>
         <div className={styles.qr}>
-          <div className={styles.qr_title}>스캔하여 AR로 보기</div>
-          {/* <img className={styles.qr_img} src="images/qrcode.jpg" alt="more" /> */}
-          <img
-            src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar&amp;size=100x100`}
-            alt=""
-            title=""
-          />
+          <div className={styles.qr_title}>모바일로 스캔하여 AR로 보기</div>
+          <img className={styles.qr_img} src="images/qrcode.png" alt="more" />
+        </div>
+        <div className={styles.share}>
+          <ul className={styles.shares}>
+              <li className={`${styles.round}`}> 
+              <FacebookShareButton url={shareUrl}>
+              <FacebookIcon size={40}/>
+            </FacebookShareButton></li>
+              <li className={`${styles.round}`}> 
+               <TwitterShareButton url={shareUrl}>
+               <TwitterIcon size={40}/>
+             </TwitterShareButton></li>
+              <li className={`${styles.round}`}>
+              <EmailShareButton url={shareUrl}>
+              <EmailIcon size={40}/>
+            </EmailShareButton></li>
+            </ul>
         </div>
       </div>
     </section>
@@ -129,3 +162,4 @@ const ArMain = ({ toggleState }) => {
 };
 
 export default ArMain;
+
