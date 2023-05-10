@@ -28,6 +28,7 @@ function PlantViewer() {
   
 
   return (
+    <section className={styles.main}>
     <model-viewer
       ref={modelViewerVariantsRef}
       src="3d/plant.glb"
@@ -45,6 +46,7 @@ function PlantViewer() {
         </div>
       </div>
     </model-viewer>
+    </section>
   );
 }
 
