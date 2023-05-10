@@ -1,0 +1,29 @@
+model-viewer {
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+  }
+
+ .controls{
+  margin: 10px;
+ }
+
+  select {
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  select:focus {
+    outline: none;
+    background-color: #e8f0fe;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  select option {
+    background-color: #f2f2f2;
+    color: #333;
+  }

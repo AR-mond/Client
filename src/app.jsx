@@ -17,6 +17,7 @@ import Intro from './components/intro/intro';
 import Guide from './components/guide/guide';
 import Support from './components/support/support';
 import Portfolio from './components/portfolio/portfolio';
+import PlantViewer from './pages/plant';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home />, errorElement: <NotFound /> },
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
   { path: '/guide', element: <Guide /> },
   { path: '/support', element: <Support /> },
   { path: '/portfolio', element: <Portfolio /> },
+  {path: '/plant',element: <PlantViewer />}
 ]);
 
 const App = () => {
