@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   height: 100vh;
-  padding-top: 80px;
+  /* padding-top: 80px; */
 }
 
 .modelViewer {
@@ -11,9 +11,14 @@
 
 .toggle_btn {
   display: none;
+  position: absolute;
+  bottom: 70px;
+  right: 16px;
   font-size: 30px;
   cursor: pointer;
   color: #101010;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 100px;
   width: 40px;
   height: 40px;
 }
@@ -35,24 +40,26 @@
   display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
 
-
 .size {
   display: inline-flex;
   flex-direction: column;
   float: right;
-  margin: 20px;
+  margin: 10px;
+  font-size: 16px;
+  font-family: 'notoSansKr-regular';
 }
 
-.custom{
+.custom {
   width: 100%;
 }
 
 .size_title,
 .custom_title {
+  display: flex;
+  align-items: center;
   font-size: 20px;
   font-family: 'notoSansKr-medium';
   padding: 10px 0;
-  margin-top: 20px;
 }
 
 .color_title,
@@ -62,17 +69,15 @@
   margin: 10px;
 }
 
-.titles{
-  margin: 10px;
+.titles {
+  margin: 0 10px;
 }
 
 .x_size,
 .y_size,
-.z_size, 
+.z_size,
 .v_size {
-  font-size: 16px;
-  font-family: 'notoSansKr-regular';
-  margin: 10px;
+  margin: 5px;
 }
 
 .colors {
@@ -111,7 +116,7 @@
   cursor: pointer;
 }
 
-.colorpicker{
+.colorpicker {
   display: flex;
   list-style: none;
   margin: 20px;
@@ -120,16 +125,16 @@
 }
 
 .color1 {
-  background-color: #4A4A4A;
+  background-color: #4a4a4a;
 }
 .color2 {
-  background-color: #C5B2A0;
+  background-color: #c5b2a0;
 }
 .color3 {
-  background-color: #77B7F7;
+  background-color: #77b7f7;
 }
 .color4 {
-  background-color: #FD529C;
+  background-color: #fd529c;
 }
 
 .texture1,
@@ -141,7 +146,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .default_color {
   background-color: #ffffff;
@@ -198,10 +202,7 @@
   .size_title,
   .color_title,
   .texture_title,
-  .qr_title,
-  .x_size,
-  .y_size,
-  .z_size {
+  .qr_title {
     font-size: 15px;
   }
 
@@ -210,31 +211,23 @@
   }
 
   .toggle_btn {
-    display: block;
-    position: absolute;
-    bottom: 70px;
-    right: 16px; 
-  }
-
-  .toggle_btn_fab{
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background-color: #fff;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 100px;
+    align-items: center;
   }
 
-  .toggle_btn_fab:hover{
-    background: rgb(255, 178, 29);
-}
   .round,
   .rectangle {
     width: 30px;
     height: 30px;
+  }
+
+  .size {
+    font-size: 12px;
+  }
+
+  .size_title,
+  .custom_title {
+    font-size: 18px;
   }
 }

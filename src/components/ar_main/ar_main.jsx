@@ -12,13 +12,15 @@ import {
 import { ChromePicker } from 'react-color';
 import Modal from '../ar_modal/ar_modal';
 
-const ArMain = ({ toggleState, handleToggle }) => {
+const ArMain = () => {
+  const [toggleState, setToggleState] = useState(false);
+
   const location = useLocation();
   const link = location.state.link.gltf;
   console.log(link);
 
   const handleToggleBtn = () => {
-    handleToggle(!toggleState);
+    setToggleState(!toggleState);
   };
 
   const modelViewerRef = useRef();
@@ -87,7 +89,9 @@ const ArMain = ({ toggleState, handleToggle }) => {
           </div>
           <Modal />
           <div className={styles.toggle_btn} onClick={handleToggleBtn}>
-            <div className={styles.toggle_btn_fab}>+</div>
+            <div className={styles.toggle_btn_fab}>
+              {toggleState ? '-' : '+'}
+            </div>
           </div>
         </model-viewer>
       </div>
