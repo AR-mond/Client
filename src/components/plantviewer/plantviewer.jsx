@@ -28,6 +28,12 @@ function PlantViewer() {
 
   return (
     <section className={styles.main}>
+      <div className={styles.controls}>
+        <div>
+          <h3>화분의 소재를 변경 해보세요~</h3>
+          <select ref={selectRef}></select>
+        </div>
+      </div>
       <div className={styles.modelViewer}>
         <model-viewer
           ref={modelViewerVariantsRef}
@@ -38,14 +44,7 @@ function PlantViewer() {
           shadow-intensity="2"
           shadow-softness="0"
           autoplay
-        >
-          <div className={styles.controls}>
-            <div>
-              <h3>화분의 소재를 변경 해보세요~</h3>
-              <select ref={selectRef}></select>
-            </div>
-          </div>
-        </model-viewer>
+        ></model-viewer>
       </div>
     </section>
   );
