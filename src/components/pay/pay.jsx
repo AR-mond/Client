@@ -9,6 +9,12 @@ export default function Pay() {
   const location = useLocation();
   const data = location.state.data.data;
 
+  let total_price = 0;
+  data.map(item => {
+    total_price += parseInt(item.price.slice(0, -1));
+    return 0;
+  });
+
   const handleClick = () => {
     navigate('/pay/success');
   };
@@ -35,7 +41,7 @@ export default function Pay() {
           <div className={styles.container3}>
             <div className={styles.between}>
               <p>예상 견적 금액</p>
-              <p>3500000 원</p>
+              <p>{`${total_price} 원`}</p>
             </div>
             <div className={`${styles.between} ${styles.bottom_line}`}>
               <p>배송 비용</p>
@@ -44,7 +50,7 @@ export default function Pay() {
             <hr />
             <div className={styles.between}>
               <p>예상 총 결제 금액</p>
-              <p>3503000 원</p>
+              <p>{`${total_price + 3000} 원`}</p>
             </div>
           </div>
         </div>

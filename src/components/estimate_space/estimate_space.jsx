@@ -66,12 +66,24 @@ const EstimateSpace = ({ onAdd }) => {
     selectRef.current.value = 'ABS';
   };
 
+  const calculatePrice = () => {
+    let price = 0;
+    const weight = material === 'ABS' ? 3.6 : 4;
+    const volume_price = Math.round(volume / 100) * 100 * weight;
+    price += volume_price;
+    if (isCleanCheck) price += volume_price * 0.1;
+    if (isPaintingCheck) price += volume_price * 0.1;
+    price *= nums;
+    return price;
+  };
+
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
     if (file !== null) {
       const x = Math.round(fileInfo.width);
       const y = Math.round(fileInfo.height);
       const z = Math.round(fileInfo.length);
+      const price = calculatePrice();
       onAdd({
         // id:
         name: file.name,
@@ -81,7 +93,7 @@ const EstimateSpace = ({ onAdd }) => {
         isClean: isCleanCheck ? 'O' : 'X',
         isPaint: isPaintingCheck ? 'O' : 'X',
         nums,
-        price: '1,000,000원',
+        price: `${price}원`,
         file,
       });
       init();
