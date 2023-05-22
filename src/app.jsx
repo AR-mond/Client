@@ -18,6 +18,7 @@ import Guide from './components/guide/guide';
 import Support from './components/support/support';
 import Portfolio from './components/portfolio/portfolio';
 import PlantViewer from './pages/plant';
+import Pay from './components/pay/pay';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home />, errorElement: <NotFound /> },
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
   { path: '/guide', element: <Guide /> },
   { path: '/support', element: <Support /> },
   { path: '/portfolio', element: <Portfolio /> },
-  {path: '/plant',element: <PlantViewer />}
+  { path: '/plant', element: <PlantViewer /> },
+  { path: '/pay', element: <Pay /> },
 ]);
 
 const App = () => {

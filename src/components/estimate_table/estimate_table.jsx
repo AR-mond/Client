@@ -1,8 +1,46 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
 import styles from './estimate_table.module.css';
 
-const Estimate = ({ columns, data }) => {
+const EstimateTable = ({ data }) => {
+  const columns = useMemo(
+    () => [
+      {
+        accessor: 'name',
+        Header: '파일명',
+      },
+      {
+        accessor: 'size',
+        Header: '사이즈',
+      },
+      {
+        accessor: 'volume',
+        Header: '볼륨',
+      },
+      {
+        accessor: 'material',
+        Header: '소재',
+      },
+      {
+        accessor: 'isClean',
+        Header: '후처리',
+      },
+      {
+        accessor: 'isPaint',
+        Header: '도색',
+      },
+      {
+        accessor: 'nums',
+        Header: '수량',
+      },
+      {
+        accessor: 'price',
+        Header: '예상견적금액',
+      },
+    ],
+    []
+  );
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
@@ -47,4 +85,4 @@ const Estimate = ({ columns, data }) => {
   );
 };
 
-export default Estimate;
+export default EstimateTable;
