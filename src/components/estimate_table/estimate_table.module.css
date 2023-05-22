@@ -15,3 +15,20 @@
   border: 1px solid black;
   font-family: 'notoSansKr-medium';
 }
+
+.xbtn {
+  font-weight: bold;
+}
+
+.btnText {
+  background-color: orange;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  cursor: pointer;
+}
