@@ -19,6 +19,7 @@ import Support from './components/support/support';
 import Portfolio from './components/portfolio/portfolio';
 import PlantViewer from './pages/plant';
 import Pay from './components/pay/pay';
+import PaySuccess from './components/pay_success/pay_success';
 
 const router = createBrowserRouter([
   { path: '/', element: <Home />, errorElement: <NotFound /> },
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
   { path: '/portfolio', element: <Portfolio /> },
   { path: '/plant', element: <PlantViewer /> },
   { path: '/pay', element: <Pay /> },
+  { path: '/pay/success', element: <PaySuccess /> },
 ]);
 
 const App = () => {

@@ -66,10 +66,10 @@ const Header = () => {
             navigate('/login');
           }}
         >
-          <img src="icon/account.svg" alt="account"></img>
+          <img src="/icon/account.svg" alt="account"></img>
         </li>
         <li className={styles.setting_item}>
-          <img src="icon/language.svg" alt="language"></img>
+          <img src="/icon/language.svg" alt="language"></img>
         </li>
       </ul>
     </header>

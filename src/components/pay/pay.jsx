@@ -2,12 +2,16 @@ import React from 'react';
 import styles from './pay.module.css';
 import Header from '../header/header';
 import EstimateTable from '../estimate_table/estimate_table';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Pay() {
+  const navigate = useNavigate();
   const location = useLocation();
   const data = location.state.data.data;
-  console.log(data);
+
+  const handleClick = () => {
+    navigate('/pay/success');
+  };
 
   return (
     <section className={styles.container}>
@@ -52,7 +56,9 @@ export default function Pay() {
           placeholder="제조 특이사항 및 상세한 가공 요청을 입력해 주세요."
         ></textarea>
       </div>
-      <div className={styles.btn}>견적 요청</div>
+      <div className={styles.btn} onClick={handleClick}>
+        견적 요청
+      </div>
     </section>
   );
 }
