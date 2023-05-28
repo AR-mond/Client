@@ -53,14 +53,6 @@ const Header = () => {
       </div>
       <ul className={styles.setting}>
         <li
-          className={styles.goestimate}
-          onClick={() => {
-            navigate('/estimate');
-          }}
-        >
-          <div>견적요청</div>
-        </li>
-        <li
           className={styles.setting_item}
           onClick={() => {
             navigate('/login');

@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import styles from './ar_main.module.css';
 import {
   FacebookShareButton,
@@ -14,10 +13,6 @@ import Modal from '../ar_modal/ar_modal';
 
 const ArMain = () => {
   const [toggleState, setToggleState] = useState(false);
-
-  const location = useLocation();
-  const link = location.state.link.gltf;
-  console.log(link);
 
   const handleToggleBtn = () => {
     setToggleState(!toggleState);
@@ -73,8 +68,8 @@ const ArMain = () => {
           // ar-rotate
           camera-controls
           touch-action="pan-y"
-          src={link}
-          //src="3d/deer.glb"
+          // src={link}
+          src="3d/deer.glb"
           ar
         >
           <div className={styles.size}>
@@ -82,10 +77,10 @@ const ArMain = () => {
               <img src="icon/cube.svg" alt="cube"></img>
               <span className={styles.titles}>모델 정보</span>
             </div>
-            <div className={styles.x_size}>X길이(Length): 1201</div>
-            <div className={styles.y_size}>Y너비(Width): 990</div>
-            <div className={styles.z_size}>Z높이(Height): 1890</div>
-            <div className={styles.v_size}>부피(Volume): 3090</div>
+            <div className={styles.x_size}>X길이(Length): 5 cm</div>
+            <div className={styles.y_size}>Y너비(Width): 18 cm</div>
+            <div className={styles.z_size}>Z높이(Height): 14 cm</div>
+            <div className={styles.v_size}>부피(Volume): 209 cm³</div>
           </div>
           <Modal />
           <div className={styles.toggle_btn} onClick={handleToggleBtn}>

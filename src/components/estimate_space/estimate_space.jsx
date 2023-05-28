@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,13 +14,26 @@ const EstimateSpace = ({ onAdd }) => {
   const fileInput = useRef(null);
   const selectRef = useRef(null);
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [fileInfo, setFileInfo] = useState({});
   const [material, setMeterial] = useState('ABS');
   const [nums, setNums] = useState(1);
   const [isCleanCheck, setIsCleanCheck] = useState(true);
   const [isPaintingCheck, setIsPaintingCheck] = useState(true);
-  const [volume, setVolume] = useState();
+  const [volume, setVolume] = useState(null);
+
+  useEffect(() => {
+    const objString = window.localStorage.getItem('fileObj');
+    const fileObj = JSON.parse(objString);
+
+    if (fileObj) {
+      setFileName(fileObj.fileName);
+      setFileURL(fileObj.fileURL);
+      setFileInfo(fileObj.fileInfo);
+      setVolume(fileObj.volume);
+    }
+  }, []);
 
   // '파일 추가' 버튼 클릭 시 fileInput 클릭 이벤트 발생
   const handleFileButtonClick = e => {
@@ -34,6 +47,7 @@ const EstimateSpace = ({ onAdd }) => {
     const url = window.URL.createObjectURL(files[0]);
     setFileURL(url);
     setFile(files[0]);
+    setFileName(e.target.files[0].name);
 
     const loader = new STLLoader();
     loader.load(url, geometry => {
@@ -47,6 +61,7 @@ const EstimateSpace = ({ onAdd }) => {
     const url = window.URL.createObjectURL(e.target.files[0]);
     setFileURL(url);
     setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
 
     const loader = new STLLoader();
     loader.load(url, geometry => {
@@ -58,17 +73,21 @@ const EstimateSpace = ({ onAdd }) => {
   // 초기화
   const init = () => {
     setFile(null);
+    setFileURL(null);
+    setFileName(null);
+    setFileInfo(null);
     setIsCleanCheck(true);
     setIsPaintingCheck(true);
     setNums(1);
     setMeterial('ABS');
+    setVolume(null);
     fileInput.current.value = null;
     selectRef.current.value = 'ABS';
   };
 
   const calculatePrice = () => {
     let price = 0;
-    const weight = material === 'ABS' ? 3.6 : 4;
+    const weight = material === 'ABS' ? 21.6 : 24;
     const volume_price = Math.round(volume / 100) * 100 * weight;
     price += volume_price;
     if (isCleanCheck) price += volume_price * 0.1;
@@ -79,14 +98,14 @@ const EstimateSpace = ({ onAdd }) => {
 
   // 모델링 파일 정보를 onAdd를 통해 전달
   const handleAddFile = () => {
-    if (file !== null) {
+    if (fileURL !== null) {
       const x = Math.round(fileInfo.width);
       const y = Math.round(fileInfo.height);
       const z = Math.round(fileInfo.length);
       const price = calculatePrice();
       onAdd({
         // id:
-        name: file.name,
+        name: fileName,
         size: `${x} x ${y} x ${z} cm`,
         volume: `${volume} cm³`,
         material,
@@ -97,6 +116,7 @@ const EstimateSpace = ({ onAdd }) => {
         file,
       });
       init();
+      window.localStorage.removeItem('fileObj');
     } else {
       console.log('파일이 선택되지 않았습니다.');
       return;
@@ -111,6 +131,16 @@ const EstimateSpace = ({ onAdd }) => {
       // 2. gltf, stl 파일 POST API 보내기
 
       // 3. return된 주소URL로 접속하도록 하기!
+
+      const fileObj = {
+        fileName,
+        fileURL,
+        fileInfo,
+        volume,
+      };
+      console.log(fileObj);
+      const objString = JSON.stringify(fileObj);
+      window.localStorage.setItem('fileObj', objString);
 
       navigate('/ar', {
         state: {
@@ -151,7 +181,7 @@ const EstimateSpace = ({ onAdd }) => {
         }}
         onDrop={handleDrop}
       >
-        {file === null ? (
+        {fileURL === null ? (
           <>
             <div className={styles.file_btn} onClick={handleFileButtonClick}>
               파일 선택

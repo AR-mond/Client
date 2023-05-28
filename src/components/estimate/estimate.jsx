@@ -44,7 +44,7 @@ const Estimate = () => {
       <p className={styles.title}>실시간 견적확인</p>
       <p className={styles.subtitle}>원하시는 출력물의 견적을 받아보세요</p>
       <EstimateSpace onAdd={handleAdd} />
-      <EstimateTable data={data} onDelete={handleDelete} />
+      <EstimateTable data={data} onDelete={handleDelete} canDelete={true} />
       <div className={styles.btns}>
         {/* <div className={styles.caustion_btn}>견적 주의사항</div> */}
         <div className={styles.request_btn} onClick={handleClick}>
