@@ -7,6 +7,7 @@ import { StlViewer } from 'react-stl-viewer';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import calculateVolume from '../../service/calc';
 import stlToGltf from '../../service/translater';
+import axios from 'axios';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const EstimateSpace = ({ onAdd }) => {
 
   // fileInput에서 특정 파일 선택하면 fileurl과 file 저장
   const handleChange = e => {
+    console.log(e.target.files[0]);
     const url = window.URL.createObjectURL(e.target.files[0]);
     setFileURL(url);
     setFile(e.target.files[0]);
@@ -106,17 +108,84 @@ const EstimateSpace = ({ onAdd }) => {
   const handleAR = async () => {
     if (file !== null) {
       // 1. gltf 변환
-      const gltf = await stlToGltf(fileURL);
-      console.log(gltf);
+      // const gltf = await stlToGltf(fileURL);
+      // console.log(gltf);
+
+      stlToGltf(fileURL).then(gltf => {
+        let formData = new FormData(); // new FromData()로 새로운 객체 생성
+        formData.append('stl_file', file); // <input name="item" value="hi"> 와 같다.
+        formData.append('gltf_file', gltf);
+        fetch('http://3.82.127.35/api/upload', {
+          method: 'POST',
+          body: formData,
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            // const gltf_link = data.converted_file;
+            // navigate(`/ar/${data.id}`, {
+            //   state: {
+            //     link: { gltf_link },
+            //   },
+            // });
+          });
+      });
+
+      navigate(`/ar`, {
+        state: {
+          link: { fileURL },
+        },
+      });
+
+      // axios.get('http://3.82.127.35/api/test').then(res => console.log(res));
+      // fetch('http://3.82.127.35/api/test').then(res => console.log(res));
+
+      // axios
+      //   .post('http://3.82.127.35/api/upload', {
+      //     // headers: {
+      //     //   'Content-Type': 'application/json',
+      //     // },
+      //     data: {
+      //       stl_file: file,
+      //       gltf_file: gltf,
+      //     },
+      //   })
+      //   .then(res => {
+      //     console.log(res.data);
+      //   });
+
+      // console.log(file);
+      // console.log(typeof file);
+      // console.log(gltf);
+      // console.log(typeof gltf);
+      // fetch('http://3.82.127.35/api/upload', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     stl_file: file,
+      //     gltf_file: gltf,
+      //   }),
+      // })
+      //   .then(res => console.log(res.json()))
+      //   .then(data => console.log(data));
+
+      // fetch('http://3.82.127.35/api/test', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     data: 'hello',
+      //   }),
+      // })
+      //   .then(res => console.log(res.json()))
+      //   .then(data => console.log(data));
+
       // 2. gltf, stl 파일 POST API 보내기
 
       // 3. return된 주소URL로 접속하도록 하기!
-
-      navigate('/ar', {
-        state: {
-          link: { gltf },
-        },
-      });
     }
   };
 

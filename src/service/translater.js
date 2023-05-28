@@ -14,12 +14,22 @@ export default async function stlToGltf(stlFileUrl) {
 
       exporter.parse(scene, gltf => {
         // resolve(gltf);
-        const blob = new Blob([JSON.stringify(gltf)], {
+
+        const outputData = JSON.stringify(gltf);
+
+        // Create a file object
+        const gltfFile = new File([outputData], 'converted.gltf', {
           type: 'application/octet-stream',
         });
-        // Blob URL 생성
-        const url = URL.createObjectURL(blob);
-        resolve(url);
+
+        resolve(gltfFile);
+
+        // const blob = new Blob([JSON.stringify(gltf)], {
+        //   type: 'application/octet-stream',
+        // });
+        // // Blob URL 생성
+        // const url = URL.createObjectURL(blob);
+        // resolve(url);
       });
     });
   });
