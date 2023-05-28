@@ -8,6 +8,7 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import calculateVolume from '../../service/calc';
 import stlToGltf from '../../service/translater';
 import axios from 'axios';
+import Loading from '../Loading';
 
 const EstimateSpace = ({ onAdd }) => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const EstimateSpace = ({ onAdd }) => {
   const [isCleanCheck, setIsCleanCheck] = useState(true);
   const [isPaintingCheck, setIsPaintingCheck] = useState(true);
   const [volume, setVolume] = useState();
+  const [loading, setLoading] = useState(false);
 
   // '파일 추가' 버튼 클릭 시 fileInput 클릭 이벤트 발생
   const handleFileButtonClick = e => {
@@ -107,85 +109,25 @@ const EstimateSpace = ({ onAdd }) => {
 
   const handleAR = async () => {
     if (file !== null) {
-      // 1. gltf 변환
-      // const gltf = await stlToGltf(fileURL);
-      // console.log(gltf);
-
       stlToGltf(fileURL).then(gltf => {
-        let formData = new FormData(); // new FromData()로 새로운 객체 생성
-        formData.append('stl_file', file); // <input name="item" value="hi"> 와 같다.
+        let formData = new FormData();
+        formData.append('stl_file', file);
         formData.append('gltf_file', gltf);
-        fetch('http://3.82.127.35/api/upload', {
-          method: 'POST',
-          body: formData,
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-            // const gltf_link = data.converted_file;
-            // navigate(`/ar/${data.id}`, {
-            //   state: {
-            //     link: { gltf_link },
-            //   },
-            // });
-          });
+        setLoading(true);
+
+        axios.post('http://3.82.127.35/api/upload', formData).then(res => {
+          setLoading(false);
+          const gltf_link = res.data.gltf_file_path;
+
+          window.open('https://www.naver.com/');
+
+          // navigate(`/ar/${res.data.id}`, {
+          //   state: {
+          //     link: { gltf_link },
+          //   },
+          // });
+        });
       });
-
-      navigate(`/ar`, {
-        state: {
-          link: { fileURL },
-        },
-      });
-
-      // axios.get('http://3.82.127.35/api/test').then(res => console.log(res));
-      // fetch('http://3.82.127.35/api/test').then(res => console.log(res));
-
-      // axios
-      //   .post('http://3.82.127.35/api/upload', {
-      //     // headers: {
-      //     //   'Content-Type': 'application/json',
-      //     // },
-      //     data: {
-      //       stl_file: file,
-      //       gltf_file: gltf,
-      //     },
-      //   })
-      //   .then(res => {
-      //     console.log(res.data);
-      //   });
-
-      // console.log(file);
-      // console.log(typeof file);
-      // console.log(gltf);
-      // console.log(typeof gltf);
-      // fetch('http://3.82.127.35/api/upload', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     stl_file: file,
-      //     gltf_file: gltf,
-      //   }),
-      // })
-      //   .then(res => console.log(res.json()))
-      //   .then(data => console.log(data));
-
-      // fetch('http://3.82.127.35/api/test', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     data: 'hello',
-      //   }),
-      // })
-      //   .then(res => console.log(res.json()))
-      //   .then(data => console.log(data));
-
-      // 2. gltf, stl 파일 POST API 보내기
-
-      // 3. return된 주소URL로 접속하도록 하기!
     }
   };
 
@@ -228,17 +170,6 @@ const EstimateSpace = ({ onAdd }) => {
             <p>Drag & Drop</p>
           </>
         ) : (
-          // <model-viewer
-          //   alt="sample"
-          //   // ar-rotate
-          //   camera-controls
-          //   touch-action="pan-y"
-          //   auto-rotate
-          //   src={fileURL}
-          //   ar
-          //   // stage-light-intensity="3"
-          //   // environment-intensity="2"
-          // ></model-viewer>
           <StlViewer
             style={{
               width: '100%',
@@ -316,6 +247,7 @@ const EstimateSpace = ({ onAdd }) => {
           </div>
         </div>
       </div>
+      {loading && <Loading />}
     </div>
   );
 };

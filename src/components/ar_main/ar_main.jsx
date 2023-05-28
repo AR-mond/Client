@@ -16,8 +16,7 @@ const ArMain = () => {
   const [toggleState, setToggleState] = useState(false);
 
   const location = useLocation();
-  const link = location.state.link.gltf;
-  console.log(link);
+  const link = location.state.link.gltf_link;
 
   const handleToggleBtn = () => {
     setToggleState(!toggleState);
@@ -79,7 +78,7 @@ const ArMain = () => {
         >
           <div className={styles.size}>
             <div className={styles.size_title}>
-              <img src="icon/cube.svg" alt="cube"></img>
+              <img src="/icon/cube.svg" alt="cube"></img>
               <span className={styles.titles}>모델 정보</span>
             </div>
             <div className={styles.x_size}>X길이(Length): 1201</div>
@@ -98,7 +97,7 @@ const ArMain = () => {
       <div className={`${styles.info} ${toggleState ? styles.active : null}`}>
         <div className={styles.custom}>
           <div className={styles.custom_title}>
-            <img src="icon/custom.svg" alt="custom"></img>
+            <img src="/icon/custom.svg" alt="custom"></img>
             <span className={styles.titles}>모델 커스텀</span>
           </div>
           <div className={styles.color}>
@@ -150,7 +149,12 @@ const ArMain = () => {
         </div>
         <div className={styles.qr}>
           <div className={styles.qr_title}>모바일로 스캔하여 AR로 보기</div>
-          <img className={styles.qr_img} src="images/qrcode.png" alt="more" />
+          {/* <img className={styles.qr_img} src="images/qrcode.png" alt="more" /> */}
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.naver.com/&amp;size=100x100"
+            alt="qr"
+            title="qr"
+          />
         </div>
         <div className={styles.share}>
           <ul className={styles.shares}>
