@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
 import styles from './estimate_table.module.css';
 
-const EstimateTable = ({ data, onDelete }) => {
+const EstimateTable = ({ data, onDelete, canDelete }) => {
   const columns = useMemo(
     () => [
       {
@@ -78,14 +78,16 @@ const EstimateTable = ({ data, onDelete }) => {
                       {cell.render('Cell')}
                     </td>
                   ))}
-                  <td className={styles.xbtn}>
-                    <div
-                      className={styles.btnText}
-                      onClick={() => onDelete(row.id)}
-                    >
-                      X
-                    </div>
-                  </td>
+                  {canDelete && (
+                    <td className={styles.xbtn}>
+                      <div
+                        className={styles.btnText}
+                        onClick={() => onDelete(row.id)}
+                      >
+                        X
+                      </div>
+                    </td>
+                  )}
                 </tr>
               );
             })}

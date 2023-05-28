@@ -25,7 +25,7 @@ export default function Pay() {
       <p className={styles.title}>결제</p>
       <div className={styles.marginY}>
         <div className={styles.title2}>파일</div>
-        <EstimateTable data={data} />
+        <EstimateTable data={data} canDelete={false} />
       </div>
       <div className={styles.marginY}>
         <div className={styles.title2}>결제 수단</div>

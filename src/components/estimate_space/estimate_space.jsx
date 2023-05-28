@@ -72,7 +72,7 @@ const EstimateSpace = ({ onAdd }) => {
 
   const calculatePrice = () => {
     let price = 0;
-    const weight = material === 'ABS' ? 3.6 : 4;
+    const weight = material === 'ABS' ? 21.6 : 24;
     const volume_price = Math.round(volume / 100) * 100 * weight;
     price += volume_price;
     if (isCleanCheck) price += volume_price * 0.1;

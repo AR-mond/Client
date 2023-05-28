@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import Login from './pages/login';
 import Findid from './pages/findid';
@@ -20,31 +20,36 @@ import Portfolio from './components/portfolio/portfolio';
 import PlantViewer from './pages/plant';
 import Pay from './components/pay/pay';
 import PaySuccess from './components/pay_success/pay_success';
-
-const router = createBrowserRouter([
-  { path: '/', element: <Home />, errorElement: <NotFound /> },
-  { path: '/login', element: <Login /> },
-  { path: '/findid', element: <Findid /> },
-  { path: '/findpwreset', element: <FindpwReset /> },
-  { path: '/resetpw', element: <Resetpw /> },
-  { path: '/changepw', element: <Changepw /> },
-  { path: '/join', element: <Join /> },
-  { path: '/joinfin', element: <Joinfin /> },
-  { path: '/estimate', element: <Estimate /> },
-  { path: '/mypage', element: <Mypage /> },
-  { path: '/test1', element: <Test1 /> },
-  { path: '/ar/:id', element: <Ar /> },
-  { path: '/intro', element: <Intro /> },
-  { path: '/guide', element: <Guide /> },
-  { path: '/support', element: <Support /> },
-  { path: '/portfolio', element: <Portfolio /> },
-  { path: '/plant', element: <PlantViewer /> },
-  { path: '/pay', element: <Pay /> },
-  { path: '/pay/success', element: <PaySuccess /> },
-]);
+import ScrollToTop from './components/scrollToTop';
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/findid" exact element={<Findid />} />
+        <Route path="/findpwreset" exact element={<FindpwReset />} />
+        <Route path="/resetpw" exact element={<Resetpw />} />
+        <Route path="/changepw" exact element={<Changepw />} />
+        <Route path="/join" exact element={<Join />} />
+        <Route path="/joinfin" exact element={<Joinfin />} />
+        <Route path="/estimate" exact element={<Estimate />} />
+        <Route path="/mypage" exact element={<Mypage />} />
+        <Route path="/test1" exact element={<Test1 />} />
+        <Route path="/ar" exact element={<Ar />} />
+        <Route path="/intro" exact element={<Intro />} />
+        <Route path="/guide" exact element={<Guide />} />
+        <Route path="/support" exact element={<Support />} />
+        <Route path="/portfolio" exact element={<Portfolio />} />
+        <Route path="/plant" exact element={<PlantViewer />} />
+        <Route path="/pay" exact element={<Pay />} />
+        <Route path="/pay/success" exact element={<PaySuccess />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
