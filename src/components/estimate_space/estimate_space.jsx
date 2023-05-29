@@ -24,6 +24,7 @@ const EstimateSpace = ({ onAdd }) => {
   const [volume, setVolume] = useState(null);
 
   useEffect(() => {
+    window.localStorage.clear();
     const objString = window.localStorage.getItem('fileObj');
     const fileObj = JSON.parse(objString);
 
