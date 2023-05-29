@@ -168,12 +168,13 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .qr_title {
   font-size: 16px;
   font-family: 'notoSansKr-medium';
+  margin-bottom: 10px;
 }
 
 .qr_img {

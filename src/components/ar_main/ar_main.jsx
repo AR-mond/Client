@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import styles from './ar_main.module.css';
 import {
   FacebookShareButton,
@@ -11,12 +11,23 @@ import {
 } from 'react-share';
 import { ChromePicker } from 'react-color';
 import Modal from '../ar_modal/ar_modal';
+import axios from 'axios';
 
 const ArMain = () => {
   const [toggleState, setToggleState] = useState(false);
+  const [gltfLink, setGltfLink] = useState(null);
 
-  const location = useLocation();
-  const link = location.state.link.gltf_link;
+  // const location = useLocation();
+  // const link = location.state.link.gltf_link;
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    axios.get(`http://3.82.127.35/api/models/file/${id}/gltf`).then(res => {
+      console.log(res.data);
+      setGltfLink(res.data.gltf_file_path);
+    });
+  }, []);
 
   const handleToggleBtn = () => {
     setToggleState(!toggleState);
@@ -72,8 +83,8 @@ const ArMain = () => {
           // ar-rotate
           camera-controls
           touch-action="pan-y"
-          src={link}
-          //src="3d/deer.glb"
+          src={gltfLink}
+          // src="3d/deer.glb"
           ar
         >
           <div className={styles.size}>

@@ -115,18 +115,20 @@ const EstimateSpace = ({ onAdd }) => {
         formData.append('gltf_file', gltf);
         setLoading(true);
 
-        axios.post('http://3.82.127.35/api/upload', formData).then(res => {
-          setLoading(false);
-          const gltf_link = res.data.gltf_file_path;
+        axios
+          .post('http://3.82.127.35/api/models/upload', formData)
+          .then(res => {
+            setLoading(false);
+            const gltf_link = res.data.gltf_file_path;
+            console.log(gltf_link);
+            // window.open(`https://ar2art.kro.kr/ar/${res.data.id}`);
 
-          window.open('https://www.naver.com/');
-
-          // navigate(`/ar/${res.data.id}`, {
-          //   state: {
-          //     link: { gltf_link },
-          //   },
-          // });
-        });
+            navigate(`/ar/${res.data.id}`, {
+              state: {
+                link: { gltf_link },
+              },
+            });
+          });
       });
     }
   };

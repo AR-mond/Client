@@ -49,16 +49,3 @@
   margin: 0 1rem;
   cursor: pointer;
 }
-
-.goestimate {
-  border: 1px solid;
-  border-radius: 8px;
-  margin: 0 1rem;
-  cursor: pointer;
-  padding: 5px;
-  transition: all 400ms;
-}
-
-.goestimate:hover {
-  background: armondOrange;
-}

@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/estimate" exact element={<Estimate />} />
         <Route path="/mypage" exact element={<Mypage />} />
         <Route path="/test1" exact element={<Test1 />} />
-        <Route path="/ar" exact element={<Ar />} />
+        <Route path="/ar/:id" exact element={<Ar />} />
         <Route path="/intro" exact element={<Intro />} />
         <Route path="/guide" exact element={<Guide />} />
         <Route path="/support" exact element={<Support />} />
