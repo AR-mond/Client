@@ -19,6 +19,7 @@
   color: #101010;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 100px;
+  background-color: white;
   width: 40px;
   height: 40px;
 }
@@ -181,7 +182,7 @@
 }
 
 .qr_img {
-  width: 180px;
+  width: 120px;
 }
 
 .shares {
@@ -228,7 +229,7 @@
 
   .size {
     font-size: 12px;
-    top: 5px;
+    top: 15px;
     right: 5px;
   }
 

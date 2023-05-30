@@ -23,7 +23,7 @@ const ArMain = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://3.82.127.35/api/models/file/${id}/gltf`).then(res => {
+    axios.get(`https://ar2art.kro.kr/api/models/file/${id}/gltf`).then(res => {
       console.log(res.data);
       setGltfLink(res.data.gltf_file_path);
     });
@@ -161,7 +161,8 @@ const ArMain = () => {
             <div className={styles.qr}>
               <div className={styles.qr_title}>모바일로 스캔하여 AR로 보기</div>
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar/${id}&amp;size=100x100`}
+                className={styles.qr_img}
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar/${id}&amp;size=80x80`}
                 alt="qr"
                 title="qr"
               />
