@@ -92,100 +92,102 @@ const ArMain = () => {
               <img src="/icon/cube.svg" alt="cube"></img>
               <span className={styles.titles}>모델 정보</span>
             </div>
-            <div className={styles.x_size}>X길이(Length): 1201</div>
-            <div className={styles.y_size}>Y너비(Width): 990</div>
-            <div className={styles.z_size}>Z높이(Height): 1890</div>
-            <div className={styles.v_size}>부피(Volume): 3090</div>
+            <div className={styles.x_size}>X길이(Length): 1201 cm</div>
+            <div className={styles.y_size}>Y너비(Width): 990 cm</div>
+            <div className={styles.z_size}>Z높이(Height): 1890 cm</div>
+            <div className={styles.v_size}>부피(Volume): 3090 cm³</div>
           </div>
-          <Modal />
+
           <div className={styles.toggle_btn} onClick={handleToggleBtn}>
             <div className={styles.toggle_btn_fab}>
               {toggleState ? '-' : '+'}
             </div>
           </div>
-        </model-viewer>
-      </div>
-      <div className={`${styles.info} ${toggleState ? styles.active : null}`}>
-        <div className={styles.custom}>
-          <div className={styles.custom_title}>
-            <img src="/icon/custom.svg" alt="custom"></img>
-            <span className={styles.titles}>모델 커스텀</span>
-          </div>
-          <div className={styles.color}>
-            <div className={styles.color_title}>단색 색상</div>
-            <div className={styles.colorpicker}>
-              <ChromePicker
-                color={color}
-                onChange={handleColor}
-                disableAlpha={true}
+          <div
+            className={`${styles.info} ${toggleState ? styles.active : null}`}
+          >
+            <div className={styles.custom}>
+              <div className={styles.custom_title}>
+                <img src="/icon/custom.svg" alt="custom"></img>
+                <span className={styles.titles}>모델 커스텀</span>
+              </div>
+              <div className={styles.color}>
+                <div className={styles.color_title}>단색 색상</div>
+                <div className={styles.colorpicker}>
+                  <ChromePicker
+                    color={color}
+                    onChange={handleColor}
+                    disableAlpha={true}
+                  />
+                </div>
+              </div>
+
+              <div className={styles.texture}>
+                <div className={styles.texture_title}>텍스쳐</div>
+                <ul className={styles.textures} onClick={handleTexture}>
+                  <li
+                    value="images/ar_texture/Asphalt.jpg"
+                    className={`${styles.texture1} ${styles.round}`}
+                  >
+                    As
+                  </li>
+                  <li
+                    value="images/ar_texture/Aluminum.jpg"
+                    className={`${styles.texture2} ${styles.round}`}
+                  >
+                    Al
+                  </li>
+                  <li
+                    value="images/ar_texture/Wood.jpg"
+                    className={`${styles.texture3} ${styles.round}`}
+                  >
+                    W
+                  </li>
+                  <li
+                    value="images/ar_texture/5.png"
+                    className={`${styles.texture4} ${styles.round}`}
+                  >
+                    T
+                  </li>
+                  <li
+                    value="None"
+                    className={`${styles.default_color} ${styles.round}`}
+                  >
+                    P
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className={styles.qr}>
+              <div className={styles.qr_title}>모바일로 스캔하여 AR로 보기</div>
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?data=https://ar2art.kro.kr/ar/${id}&amp;size=100x100`}
+                alt="qr"
+                title="qr"
               />
             </div>
+            <div className={styles.share}>
+              <ul className={styles.shares}>
+                <li className={`${styles.round}`}>
+                  <FacebookShareButton url={shareUrl}>
+                    <FacebookIcon size={40} />
+                  </FacebookShareButton>
+                </li>
+                <li className={`${styles.round}`}>
+                  <TwitterShareButton url={shareUrl}>
+                    <TwitterIcon size={40} />
+                  </TwitterShareButton>
+                </li>
+                <li className={`${styles.round}`}>
+                  <EmailShareButton url={shareUrl}>
+                    <EmailIcon size={40} />
+                  </EmailShareButton>
+                </li>
+              </ul>
+            </div>
           </div>
-
-          <div className={styles.texture}>
-            <div className={styles.texture_title}>텍스쳐</div>
-            <ul className={styles.textures} onClick={handleTexture}>
-              <li
-                value="images/ar_texture/Asphalt.jpg"
-                className={`${styles.texture1} ${styles.round}`}
-              >
-                As
-              </li>
-              <li
-                value="images/ar_texture/Aluminum.jpg"
-                className={`${styles.texture2} ${styles.round}`}
-              >
-                Al
-              </li>
-              <li
-                value="images/ar_texture/Wood.jpg"
-                className={`${styles.texture3} ${styles.round}`}
-              >
-                W
-              </li>
-              <li
-                value="images/ar_texture/5.png"
-                className={`${styles.texture4} ${styles.round}`}
-              >
-                T
-              </li>
-              <li
-                value="None"
-                className={`${styles.default_color} ${styles.round}`}
-              >
-                P
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className={styles.qr}>
-          <div className={styles.qr_title}>모바일로 스캔하여 AR로 보기</div>
-          {/* <img className={styles.qr_img} src="images/qrcode.png" alt="more" /> */}
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.naver.com/&amp;size=100x100"
-            alt="qr"
-            title="qr"
-          />
-        </div>
-        <div className={styles.share}>
-          <ul className={styles.shares}>
-            <li className={`${styles.round}`}>
-              <FacebookShareButton url={shareUrl}>
-                <FacebookIcon size={40} />
-              </FacebookShareButton>
-            </li>
-            <li className={`${styles.round}`}>
-              <TwitterShareButton url={shareUrl}>
-                <TwitterIcon size={40} />
-              </TwitterShareButton>
-            </li>
-            <li className={`${styles.round}`}>
-              <EmailShareButton url={shareUrl}>
-                <EmailIcon size={40} />
-              </EmailShareButton>
-            </li>
-          </ul>
-        </div>
+          <Modal />
+        </model-viewer>
       </div>
     </section>
   );

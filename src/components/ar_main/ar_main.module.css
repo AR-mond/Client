@@ -6,7 +6,7 @@
 }
 
 .modelViewer {
-  width: 75%;
+  width: 100%;
 }
 
 .toggle_btn {
@@ -42,6 +42,9 @@
 
 .size {
   display: inline-flex;
+  position: absolute;
+  right: 30px;
+  top: 10px;
   flex-direction: column;
   float: right;
   margin: 10px;
@@ -225,6 +228,8 @@
 
   .size {
     font-size: 12px;
+    top: 5px;
+    right: 5px;
   }
 
   .size_title,
