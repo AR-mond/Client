@@ -12,3 +12,4 @@ link : https://dwr2zasklxdjb.cloudfront.net/
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
 ## 소개 영상
+https://github.com/AR-mond/Client/assets/68095803/a61d7553-6086-48e4-ba92-1cb08974f00c
