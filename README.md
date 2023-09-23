@@ -1,26 +1,14 @@
-# Ar2Art
+## About the Project
 
-### Page 구성
+2023 컴퓨터 캡스톤 디자인 프로젝트  
+프로젝트 주제 : Web & AR 융합 솔루션 개발
 
-1. Home - https://ar2art.kro.kr/
-2. Estimate - https://ar2art.kro.kr/estimate 🔥
-3. Ar - https://ar2art.kro.kr/ar 🔥
-4. Login - https://ar2art.kro.kr/login
-5. FindId - https://ar2art.kro.kr/findid
-6. SignUp - https://ar2art.kro.kr/join
+link : https://dwr2zasklxdjb.cloudfront.net/
 
-🔥 - 핵심 페이지
+<img width="70%" src="https://github.com/AR-mond/Client/assets/68095803/7180f5b6-3aa0-4cd0-8331-00fb1f7e738f">
 
-### 진행 상황
+## Stack
 
-- 1(Home) - UI 작업 완료
-- 2(Estimate) - https://www.viewstl.com/plugin/ 참고하면서 react에 어떻게 적용할 수 있을 지 공부중...
-- 3(Ar) - 특정 모델링 파일을 사용하여 페이지 구현 -> 나중에는 사용자가 올린 모델링 파일마다 다른 ar 페이지를 구현해야 함
-- 4,5,6 - UI 완료, but 기능은 아직..
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 
-++ src/components 안에 ar, ar_header, ar_main, estimate, estimate_space, estimate_table 폴더만 보셔도 될 것 같습니다!
-
-++ model viewer는 public/index.html파일에 import해서 사용 가능하도록 했습니다.
-https://modelviewer.dev/
-
-++ react에 있는 stlViewer 라이브러리를 사용하려도 했더니 model viewer와 충돌이 일어나서 실무자님이 보내주신 코드와 https://www.viewstl.com/plugin/ 참고하면서 react에 어떻게 잘 적용할 지 공부중에 있습니다.
+## 소개 영상
